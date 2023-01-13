@@ -8,7 +8,7 @@ Pasta onde será postado as ativades desenvolvidas durante o curso de desenvolvi
 
 ## Projetos:
 
-- [Setup de Ferramentas](/Cubo-academy-repos/hello-world/hello-world.js)
+- [Setup de Ferramentas](./hello-world/hello-world.js)
 
 ## 🦸 Autora
 
