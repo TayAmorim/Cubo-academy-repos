@@ -4,7 +4,7 @@
 
 ## Sobre
 
-Pasta onde será postado as ativades desenvolvidas durante o curso de desenvolvimento de software.
+Pasta onde será postado as atividades desenvolvidas durante o curso de desenvolvimento de software.
 
 ## Projetos:
 
