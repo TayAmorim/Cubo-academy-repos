@@ -1,0 +1,1 @@
+const caractere = "E";
