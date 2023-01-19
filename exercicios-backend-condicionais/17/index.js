@@ -1,5 +1,5 @@
-const valorDoProduto = 100000 / 100;
-const quantidadeDoParcelamento = 12;
+const valorDoProduto = 1000;
+const quantidadeDoParcelamento = 10;
 const valorPago = 300;
 
 const valorParcela = valorDoProduto / quantidadeDoParcelamento;
