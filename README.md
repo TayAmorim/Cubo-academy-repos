@@ -9,8 +9,9 @@ Pasta onde será postado as atividades desenvolvidas durante o curso de desenvol
 ## Projetos:
 
 - [Setup de Ferramentas](./hello-world/hello-world.js)
-- [Variáveis](./exercicios-backend-variaveis)
-- [Condicionais](./exercicios-backend-condicionais)
+- [Variáveis](./variaveis/)
+- [Condicionais](./condicionais/)
+- [Arrays e Loops](./arrays-loops/)
 
 ## 🦸 Autora
 
