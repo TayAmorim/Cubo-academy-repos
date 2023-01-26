@@ -105,5 +105,4 @@ const carrinho = {
 
 carrinho.addProduto(novaBermuda);
 carrinho.addProduto(novoTenis);
-
 console.log(`R$ ${carrinho.calcularDesconto()}`);
