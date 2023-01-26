@@ -79,9 +79,31 @@ const carrinho = {
     }
     return totalPagar;
   },
+  calcularDesconto: function () {
+    let menorPreco = 0;
+    let desconto10 = 0;
+    let desconto = 0;
+    const totalDeItens = this.calcularTotalDeItens();
+    const totalPagar = this.calcularTotalAPagar();
+    if (totalDeItens > 4) {
+      for (let i = 0; i < this.produtos.length; i++) {
+        if (this.produtos[i].precoUnit < menorPreco || menorPreco === 0) {
+          menorPreco = this.produtos[i].precoUnit / 100;
+        }
+      }
+      desconto10 = Math.abs(totalPagar - (totalPagar * 10) / 100 - totalPagar);
+    }
+    if (totalPagar > 100 && desconto10 > menorPreco) {
+      desconto = desconto10;
+      return desconto;
+    } else {
+      desconto = menorPreco;
+      return desconto;
+    }
+  },
 };
 
 carrinho.addProduto(novaBermuda);
 carrinho.addProduto(novoTenis);
-console.log(carrinho.imprimirResumo());
-carrinho.imprimirDetalhe();
+
+console.log(`R$ ${carrinho.calcularDesconto()}`);
