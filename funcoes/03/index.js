@@ -1,3 +1,16 @@
+const novoTenis = {
+  id: 3,
+  nome: "Tenis",
+  qtd: 1,
+  precoUnit: 10000,
+};
+const novaBermuda = {
+  id: 2,
+  nome: "Bermuda",
+  qtd: 3,
+  precoUnit: 5000,
+};
+
 const carrinho = {
   nomeDoCliente: "Guido Bernal",
   produtos: [
@@ -15,60 +28,60 @@ const carrinho = {
     },
   ],
   imprimirResumo: function () {
-    let totalItens = 0;
-    let totalPagar = 0;
-    for (let qtdItem of this.produtos) {
-      totalItens += qtdItem.qtd;
-      totalPagar += (qtdItem.qtd * qtdItem.precoUnit) / 100;
-    }
     return `
     Cliente: ${this.nomeDoCliente}
-    Total de Itens: ${totalItens} itens
-    Total a pagar: R$ ${totalPagar.toFixed(2)}`;
+    Total de Itens: ${this.calcularTotalDeItens()} itens
+    Total a pagar: R$ ${this.calcularTotalAPagar().toFixed(2)}\n`;
+  },
+  addProduto: function (produto) {
+    for (let i = 0; i < this.produtos.length; i++) {
+      if (this.produtos[i].id === produto.id) {
+        this.produtos[i].qtd += produto.qtd;
+      }
+      if (
+        this.produtos[i].id !== produto.id &&
+        this.produtos[i + 1].id !== produto.id
+      ) {
+        this.produtos.push(produto);
+        break;
+      }
+    }
+  },
+  imprimirDetalhe: function () {
+    let numeroItem = 0;
+    let totalPagarUnidade = 0;
+
+    console.log(`\nCliente: ${this.nomeDoCliente}\n`);
+    for (let i = 0; i < this.produtos.length; i++) {
+      numeroItem += 1;
+      totalPagarUnidade =
+        (this.produtos[i].precoUnit * this.produtos[i].qtd) / 100;
+      console.log(
+        `${numeroItem} - ${this.produtos[i].nome} - ${
+          this.produtos[i].qtd
+        } und - R$ ${totalPagarUnidade.toFixed(2)}`
+      );
+    }
+    console.log(`\nTotal de itens: ${this.calcularTotalDeItens()}`);
+    console.log(`Total a Pagar itens: ${this.calcularTotalAPagar()}`);
+  },
+  calcularTotalDeItens: function () {
+    let totalItens = 0;
+    for (let qtdItem of this.produtos) {
+      totalItens += qtdItem.qtd;
+    }
+    return totalItens;
+  },
+  calcularTotalAPagar: function () {
+    let totalPagar = 0;
+    for (let qtdItem of this.produtos) {
+      totalPagar += (qtdItem.qtd * qtdItem.precoUnit) / 100;
+    }
+    return totalPagar;
   },
 };
 
-const novoTenis = {
-  id: 3,
-  nome: "Tenis",
-  qtd: 1,
-  precoUnit: 10000,
-};
-const novaBermuda = {
-  id: 2,
-  nome: "Bermuda",
-  qtd: 3,
-  precoUnit: 5000,
-};
-
-function addProdutoAoCarrinho(carrinho, produto) {
-  for (let i = 0; i < carrinho.produtos.length; i++) {
-    if (carrinho.produtos[i].id === produto.id) {
-      carrinho.produtos[i].qtd += produto.qtd;
-    }
-    if (
-      carrinho.produtos[i].id !== produto.id &&
-      carrinho.produtos[i + 1].id !== produto.id
-    ) {
-      carrinho.produtos.push(produto);
-      break;
-    }
-  }
-}
-
-/* function addProdutoAoCarrinho(carrinho, produto) {
-  for (let item of carrinho.produtos) {
-    if (item.id === produto.id) {
-      item.qtd += produto.qtd;
-      console.log(item.id);
-    }
-    if (item.id !== produto.id) {
-      carrinho.produtos.push(produto);
-      break;
-    }
-  }
-} */
-addProdutoAoCarrinho(carrinho, novaBermuda);
-addProdutoAoCarrinho(carrinho, novoTenis);
+carrinho.addProduto(novaBermuda);
+carrinho.addProduto(novoTenis);
 console.log(carrinho.imprimirResumo());
-console.log(carrinho.produtos);
+carrinho.imprimirDetalhe();
