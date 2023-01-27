@@ -12,6 +12,9 @@ Repositório onde será postado as atividades desenvolvidas durante o curso de d
 - [Variáveis](./variaveis/)
 - [Condicionais](./condicionais/)
 - [Arrays e Loops](./arrays-loops/)
+- [Funções](./funcoes/)
+- [Objetos](./objetos/)
+- [Métodos de String](./metodos-strings/)
 
 ## 🦸 Autora
 
