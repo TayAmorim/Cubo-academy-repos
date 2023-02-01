@@ -8,7 +8,7 @@ function filaAtendimento(pacientes, operacao, nome) {
   if (operacao === "atender") {
     pacientes.splice(0, 1);
   }
-  console.log(pacientes);
+  console.log(`${pacientes.join()}`);
 }
 
 filaAtendimento(pacientes, "agendar", "José");
