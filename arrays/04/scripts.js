@@ -1,17 +1,20 @@
 const pacientes = ["José", "Pedro", "Maria", "João", "Ana", "Bárbara", "Joana"];
 
 function filaAtendimento(pacientes, operacao, nome) {
-  const listaPacientes = [];
-  for (let i = 0; i < listaPacientes; i++) {
-    if (operacao === "agendar" && nome === pacientes[i]) {
-      listaPacientes.push(pacientes[i]);
-    } else if (operacao === "atender" && nome === pacientes[i]) {
-      listaPacientes.unshift(pacientes[i]);
-    }
+  if (operacao === "agendar") {
+    pacientes.splice(0, 1);
+    pacientes.splice(pacientes.length, 0, nome);
   }
-  console.log(listaPacientes);
+  if (operacao === "atender") {
+    pacientes.splice(0, 1);
+  }
+  console.log(pacientes);
 }
 
-filaAtendimento(pacientes, "agendar", "Maria");
+filaAtendimento(pacientes, "agendar", "José");
+filaAtendimento(pacientes, "atender", "Pedro");
+filaAtendimento(pacientes, "atender", "Maria");
+filaAtendimento(pacientes, "agendar", "João");
 filaAtendimento(pacientes, "agendar", "Ana");
-filaAtendimento(pacientes, "atender", "José");
+filaAtendimento(pacientes, "atender", "Bárbara");
+filaAtendimento(pacientes, "agendar", "Joana");
