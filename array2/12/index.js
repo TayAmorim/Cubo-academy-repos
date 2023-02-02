@@ -46,6 +46,7 @@ const filtrandoUsuarios = (pessoas) => {
       (pessoa.profissao.toLowerCase() === "programdor" || "jornalista")
     );
   });
+
   console.log(filtrarPorIdadeProgramador);
   console.log(filtrarIdadeJornalista);
   console.log(filtrarJornalistaEProgramador);
