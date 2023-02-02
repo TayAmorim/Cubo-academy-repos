@@ -1,4 +1,10 @@
-const cidades = ["Bahia", "Gramado", "Brasilia", "Recife", "Rio de Janeiro"];
+const cidades = [
+  "Salvador",
+  "São Paulo",
+  "Brasilia",
+  "Recife",
+  "Rio de Janeiro",
+];
 
 const filtrandoCidades = (cidades) => {
   const cidadesFiltradas = cidades.filter((cidade) => {
