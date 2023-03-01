@@ -8,13 +8,8 @@ Repositório onde será postado as atividades desenvolvidas durante o curso de d
 
 ## Projetos:
 
-- [Setup de Ferramentas](./hello-world/hello-world.js)
-- [Variáveis](./variaveis/)
-- [Condicionais](./condicionais/)
-- [Arrays e Loops](./arrays-loops/)
-- [Funções](./funcoes/)
-- [Objetos](./objetos/)
-- [Métodos de String](./metodos-strings/)
+- [Modulo 1](./Modulo1-logica-programacao/)
+- [Modulo 2](./Modulo2-HTML-CSS/)
 
 ## 🦸 Autora
 
