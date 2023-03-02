@@ -1,0 +1,30 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+section {
+  margin: 10px;
+}
+
+.inline {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 60px;
+}
+div {
+  width: 200px;
+  height: 200px;
+  text-transform: uppercase;
+}
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+.red {
+  background-color: red;
+}
