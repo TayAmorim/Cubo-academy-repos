@@ -1,0 +1,35 @@
+.titulo-central {
+  text-align: center;
+}
+
+.titulo-direita {
+  text-align: right;
+}
+
+.sublinhado {
+  text-decoration-line: underline;
+}
+
+.azul {
+  color: blue;
+}
+
+.verde {
+  color: green;
+}
+
+.amarelo {
+  color: yellow;
+}
+
+.justificado {
+  text-align: justify;
+}
+
+.maiusculas {
+  text-transform: uppercase;
+}
+
+.sombreado {
+  text-shadow: 0em 0.06em red;
+}
