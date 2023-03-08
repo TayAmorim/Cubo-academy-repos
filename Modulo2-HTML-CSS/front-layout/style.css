@@ -1,0 +1,96 @@
+* {
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.logo {
+  z-index: 100;
+  width: 100%;
+  position: fixed;
+  background: #800080;
+  padding-block: 10px;
+}
+
+.logo img {
+  display: block;
+  width: 120px;
+  margin: 0 auto;
+}
+
+.container {
+  margin-inline: 60px;
+}
+
+ul {
+  list-style: none;
+}
+
+.text {
+  text-align: center;
+  bottom: 61px;
+  position: relative;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1.1rem;
+}
+
+.menu {
+  position: fixed;
+  z-index: 200;
+  top: 50%;
+  left: -60px;
+  padding: 20px;
+  display: inline-block;
+  background-color: #f08080;
+  border-radius: 10px;
+}
+
+.menu ul li {
+  margin-bottom: 10px;
+}
+
+.menu:hover {
+  left: -12px;
+  cursor: pointer;
+}
+
+.menu ul li:hover {
+  border: 1px solid white;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.menu img {
+  width: 35px;
+  height: 35px;
+}
+
+.header-img {
+  background-image: url(./assets/girafa.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 550px;
+}
+
+.information p {
+  text-align: justify;
+  margin-block: 10px;
+}
+
+.btn-top {
+  position: relative;
+  bottom: 70px;
+  padding: 10px;
+  left: 97%;
+}
+
+.btn-top img {
+  width: 40px;
+}
