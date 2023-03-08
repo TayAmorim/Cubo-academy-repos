@@ -43,8 +43,8 @@ p {
 
 .menu-itens img,
 .logout img {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
 }
 
 .menu-itens li {
@@ -70,7 +70,7 @@ p {
 .card-usuario img:hover {
   opacity: 0.8;
 }
-.final {
+.card-final {
   border-top: 1px solid #a3a3a3;
   display: flex;
   flex-direction: column;
