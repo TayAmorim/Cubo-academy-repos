@@ -1,0 +1,113 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Mulish", sans-serif;
+  background-color: #456392;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+}
+
+.menu-lateral {
+  background-color: #253a5c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-inline: 16px;
+}
+
+.logo::after {
+  content: "";
+  display: block;
+  width: 216px;
+  height: 1px;
+  background-color: #969090;
+  border-radius: 2px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-lateral button {
+  padding: 20px;
+  background-color: #41af1a;
+  border: none;
+  border-radius: 10px;
+  color: #ffff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.card img {
+  border-radius: 50%;
+  border: 8px solid #ecf3fc;
+}
+
+.conteudo {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.conteudo h1 {
+  margin-top: 32px;
+  margin-bottom: 50px;
+  font-size: 44px;
+  color: #ffff;
+  text-align: center;
+}
+
+.conteudo h2 {
+  font-size: 18px;
+  color: #131e30;
+  font-weight: 700;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffff;
+  width: 231.29px;
+  gap: 30px;
+  padding-top: 28px;
+  padding-bottom: 33.48px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.text {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 59.02px;
+}
