@@ -1,15 +1,14 @@
-.header {
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: purple;
-  color: white;
-  height: 80px;
-  padding: 0 32px;
-
   position: sticky;
   top: 0;
   z-index: 1;
+  height: 80px;
+  padding: 0 32px;
+  background-color: purple;
+  color: white;
 }
 
 ul {
@@ -22,15 +21,14 @@ ul li a {
   color: white;
 }
 
-.main {
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   padding: 32px;
   text-align: center;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
 }
 
 .card-cat img {
@@ -40,19 +38,18 @@ ul li a {
 }
 
 .card-cat {
-  border-radius: 10px;
-  color: white;
-  padding-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  cursor: pointer;
-  background-color: orange;
   width: 300px;
   height: 320px;
+  border-radius: 10px;
+  padding-bottom: 30px;
+  cursor: pointer;
   text-decoration: none;
+  background-color: orange;
+  color: white;
 }
-
 
 .card-cat:hover {
   opacity: 0.89;
