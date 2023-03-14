@@ -5,10 +5,6 @@
   font-family: sans-serif;
 }
 
-a {
-  text-decoration: none;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -29,6 +25,25 @@ header {
   color: white;
 }
 
+.logo {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+ul li a {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -37,10 +52,5 @@ footer {
   height: 200px;
   padding: 16px 32px;
   background-color: purple;
-  color: white;
-}
-
-.logo {
-  text-decoration: none;
   color: white;
 }
