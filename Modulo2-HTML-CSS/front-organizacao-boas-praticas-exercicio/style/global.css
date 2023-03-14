@@ -8,8 +8,8 @@
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   justify-content: space-between;
+  min-height: 100vh;
 }
 
 .footer {
@@ -18,12 +18,12 @@ body {
   align-items: center;
   gap: 10px;
   height: 200px;
+  padding: 16px 32px;
   background-color: purple;
   color: white;
-  padding: 16px 32px;
 }
 
-#logo {
-  color: white;
+.logo {
   text-decoration: none;
+  color: white;
 }
