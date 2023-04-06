@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+
+  font-family: sans-serif;
+}
+
+button {
+  height: 48px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+
+  width: 600px;
+  padding: 16px 8px;
+
+  text-align: center;
+}
+
+.container-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-controls button {
+  width: 42px;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.group strong {
+  margin-bottom: 8px;
+}
+
+.btn-red {
+  background-color: red;
+}
+
+.btn-blue {
+  background-color: blue;
+}
+
+.btn-purple {
+  background-color: purple;
+}
+
+.btn-black {
+  background-color: black;
+}
+
+.text {
+  margin-top: 16px;
+
+  font-size: 16px;
+  text-align: justify;
+}
