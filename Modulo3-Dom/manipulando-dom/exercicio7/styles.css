@@ -68,6 +68,6 @@ button {
 }
 
 .selected {
-  border: 8px solid green;
+  border: 5px solid green;
   margin: 0 8px;
 }
