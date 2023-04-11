@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <title>Exercício 5</title>
+  </head>
+  <body>
+    <h1>Inscrição Vestibular</h1>
+    <form>
+      <div class="element-label">
+        <label for="input-name">Informe seu nome</label>
+        <input
+          id="input-name"
+          type="text"
+          placeholder="Ex.: José dos Santos"
+          required
+        />
+      </div>
+      <div class="element-label">
+        <label for="input-email">Informe seu e-mail</label>
+        <input
+          id="input-email"
+          type="email"
+          placeholder="example@example.com"
+          required
+        />
+      </div>
+      <div class="element-label">
+        <label for="input-year-born">Informe seu ano de nascimento</label>
+        <input
+          id="input-year-born"
+          type="number"
+          placeholder="Ex.: 1992"
+          required
+        />
+      </div>
+
+      <div class="element-label">
+        <label for="input-born-year">Selecione sua cidade da prova</label>
+        <select name="select" id="select-city">
+          <option value="empty">Selecione uma cidade</option>
+          <option value="maringa">Maringá</option>
+          <option value="presidente-prudente">Presidente Prudente</option>
+          <option value="salvador">Salvador</option>
+          <option value="sao-paulo">São Paulo</option>
+        </select>
+      </div>
+
+      <div class="element-label">
+        <h3>Em qual período deseja realizar a prova?</h3>
+
+        <div>
+          <input
+            value="morning"
+            type="radio"
+            name="period"
+            id="radio-morning"
+            checked
+          />
+          <label for="radio-morning">Manhã</label>
+        </div>
+        <div>
+          <input
+            value="afternoon"
+            type="radio"
+            name="period"
+            id="radio-afternoon"
+          />
+          <label for="radio-afternoon">Tarde</label>
+        </div>
+        <div>
+          <input value="night" type="radio" name="period" id="radio-night" />
+          <label for="radio-night">Noite</label>
+        </div>
+      </div>
+
+      <div class="element-label">
+        <h3>Em quais cursos você tem interesse?</h3>
+
+        <div>
+          <input type="checkbox" name="math" id="check-math" />
+          <label for="check-math">Matemática</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            name="computer-science"
+            id="check-computer-science"
+          />
+          <label for="check-computer-science">Ciências da Computação</label>
+        </div>
+        <div>
+          <input type="checkbox" name="data-science" id="check-data-science" />
+          <label for="check-data-science">Data Science</label>
+        </div>
+      </div>
+
+      <div class="element-label">
+        <label for="input-password-recovery"
+          >Informe Senha de recuperação
+        </label>
+        <input
+          id="input-password-recovery"
+          type="password"
+          minlength="8"
+          required
+        />
+      </div>
+
+      <button>SALVAR</button>
+
+      <strong class="error-message"></strong>
+    </form>
+
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>

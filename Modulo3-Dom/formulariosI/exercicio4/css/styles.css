@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+
+  font-family: sans-serif;
+
+  background-color: purple;
+}
+
+h1 {
+  color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 500px;
+  margin-top: 16px;
+  padding: 16px 32px;
+
+  background-color: white;
+}
+
+label,
+h3 {
+  margin: 16px 0 8px 0;
+}
+
+input[type="text"],
+[type="email"],
+[type="password"],
+[type="number"],
+select {
+  width: 100%;
+  height: 58px;
+  padding: 0 8px;
+  font-size: 16px;
+}
+
+button {
+  border: none;
+  color: white;
+  background-color: rgb(57, 145, 57);
+  cursor: pointer;
+
+  width: 100%;
+  height: 58px;
+
+  margin-top: 32px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.element-label {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+.error-message {
+  display: inline-block;
+  margin-top: 32px;
+  color: red;
+}
