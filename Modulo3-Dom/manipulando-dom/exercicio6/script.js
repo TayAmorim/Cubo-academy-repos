@@ -11,6 +11,5 @@ for (let i = 0; i < imgs.length; i++) {
     avatar.src = `assets/${imgs[i]}.png`;
     avatar.style.left = `${incrementalWidth}px`;
     incrementalWidth += atualwidth;
-    console.log(incrementalWidth, atualwidth);
   }, 600 * i);
 }
