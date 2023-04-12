@@ -10,6 +10,7 @@ Repositório onde será postado as atividades desenvolvidas durante o curso de d
 
 - [Modulo 1](./Modulo1-logica-programacao/)
 - [Modulo 2](./Modulo2-HTML-CSS/)
+- [Modulo 3](./Modulo3-Dom/)
 
 ## 🦸 Autora
 
