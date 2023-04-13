@@ -1,0 +1,61 @@
+.menu-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-block: 1.5rem;
+  margin-bottom: 6.375rem;
+  background-color: #134563;
+}
+
+.menu-titulo {
+  font-family: "Rokkitt", serif;
+  padding-right: 606px;
+  color: white;
+}
+
+.icon-logout {
+  margin-right: 2rem;
+}
+
+.contact-container {
+  width: 59.75rem;
+  margin: 0 auto;
+}
+
+.btn-execute {
+  text-transform: none;
+  padding: 1rem 5.2rem;
+  margin-bottom: 2rem;
+}
+
+.contato-tabela {
+  width: 100%;
+}
+
+.header-table {
+  background-color: #f4f0f0;
+  text-align: left;
+}
+
+.header-table th,
+.line-table td {
+  padding-block: 1rem;
+}
+
+.header-table th:first-child,
+.line-table td:first-child {
+  padding-left: 2rem;
+}
+
+.line-table {
+  font-weight: 12px;
+  background-color: #fffafa;
+  border: 8px solid transparent;
+  background-clip: padding-box;
+}
+
+.line-table td:last-child {
+  text-align: right;
+  padding-left: 200px;
+  padding-right: 2rem;
+}
