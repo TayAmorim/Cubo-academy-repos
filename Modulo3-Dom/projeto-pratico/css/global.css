@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  ---btn-execute: #04c45c;
+  ---link: #1972a8;
+  --btn-cancel: hsl(356, 97%, 65%);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: black;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  gap: 7.5rem;
+}
+
+.titulo-geral {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.login {
+  margin: auto 0;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.email,
+.password,
+.name {
+  width: 29.75rem;
+  height: 3.25rem;
+  padding-left: 1rem;
+  border: none;
+  background-color: #e8e8e8;
+}
+
+.btn-execute,
+.btn-cancel {
+  padding-block: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+.btn-execute {
+  background-color: var(---btn-execute);
+}
+
+.btn-cancel {
+  background-color: var(--btn-cancel);
+}
+
+.btn-new-register {
+  text-align: center;
+}
+
+.new-register-link {
+  color: var(---link);
+}
