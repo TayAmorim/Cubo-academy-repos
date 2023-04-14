@@ -73,6 +73,10 @@ body {
   font-size: 12px;
 }
 
+.delet-contact {
+  cursor: pointer;
+}
+
 .modal {
   position: absolute;
   width: 100%;
