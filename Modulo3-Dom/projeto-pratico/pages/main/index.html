@@ -22,27 +22,85 @@
       </div>
     </header>
     <main class="contact-container">
-      <button class="btn-execute">Adicionar</button>
+      <button class="btn-execute btn-contact">Adicionar</button>
       <table class="contato-tabela" rules="none">
         <tr class="header-table">
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Telefone</th>
-          <th></th>
+          <th class="table-header-text">Nome</th>
+          <th class="table-header-text">Email</th>
+          <th class="table-header-text">Telefone</th>
+          <th class="table-header-text"></th>
         </tr>
         <tr class="line-table">
-          <td>Claudia M. Sousa</td>
-          <td>claudia@teste.com.br</td>
-          <td>(99)9999-9999</td>
+          <td class="line-table-text">Claudia M. Sousa</td>
+          <td class="line-table-text">claudia@teste.com.br</td>
+          <td class="line-table-text">(99)9999-9999</td>
           <td><img src="../../assets/delet.png" alt="" /></td>
         </tr>
         <tr class="line-table">
-          <td>João Santos</td>
-          <td>joao@teste.com.br</td>
-          <td>(99)9999-9999</td>
+          <td class="line-table-text">João Santos</td>
+          <td class="line-table-text">joao@teste.com.br</td>
+          <td class="line-table-text">(99)9999-9999</td>
+          <td><img src="../../assets/delet.png" alt="" /></td>
+        </tr>
+        <tr class="line-table">
+          <td class="line-table-text">Pedro Henrique</td>
+          <td class="line-table-text">pedro.henrque@teste.com.br</td>
+          <td class="line-table-text">(99)9999-9999</td>
+          <td><img src="../../assets/delet.png" alt="" /></td>
+        </tr>
+        <tr class="line-table">
+          <td class="line-table-text">Marina Tavares</td>
+          <td class="line-table-text">marina_tavares@teste.com.br</td>
+          <td class="line-table-text">(99)9999-9999</td>
+          <td><img src="../../assets/delet.png" alt="" /></td>
+        </tr>
+        <tr class="line-table">
+          <td class="line-table-text">Daniel Lopes</td>
+          <td class="line-table-text">daniel.lopes@cubos.academy</td>
+          <td class="line-table-text">(99)9999-9999</td>
+          <td><img src="../../assets/delet.png" alt="" /></td>
+        </tr>
+        <tr class="line-table">
+          <td class="line-table-text">Guido Cerqueira</td>
+          <td class="line-table-text">guido.cerqueira@cubos.academy</td>
+          <td class="line-table-text">(99)9999-9999</td>
           <td><img src="../../assets/delet.png" alt="" /></td>
         </tr>
       </table>
     </main>
+    <section class="modal disabled">
+      <div class="container-exclusion-modal">
+        <img
+          class="container-exclusion-closed"
+          src="../../assets/closed.png"
+          alt=""
+        />
+        <h2 class="exclusion-modal-title modal-title">Confirma a exclusão?</h2>
+        <p class="exclusion-modal-text">Deseja excluir o contato?</p>
+        <div class="exclusion-modal-btns">
+          <button class="btn-execute btn-exclusion-modal">EXCLUIR</button>
+          <button class="btn-cancel">CANCELAR</button>
+        </div>
+      </div>
+    </section>
+    <section class="modal disabled">
+      <div class="container-new-contact-modal">
+        <img
+          class="container-exclusion-closed"
+          src="../../assets/closed.png"
+          alt=""
+        />
+        <h2 class="modal-title">Novo Contato</h2>
+        <form class="form-modal-contact">
+          <input class="modal-name" type="text" placeholder="Nome" />
+          <input class="modal-email" type="email" placeholder="E-mail" />
+          <input class="modal-phone" type="text" placeholder="Telefone" />
+          <div class="btns-new-contact">
+            <button class="btn-execute">ADICIONAR</button>
+            <button class="btn-cancel">LIMPAR</button>
+          </div>
+        </form>
+      </div>
+    </section>
   </body>
 </html>

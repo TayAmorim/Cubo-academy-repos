@@ -1,3 +1,7 @@
+body {
+  position: relative;
+}
+
 .menu-container {
   display: flex;
   justify-content: end;
@@ -25,6 +29,9 @@
 .btn-execute {
   text-transform: none;
   padding: 1rem 5.2rem;
+}
+
+.btn-contact {
   margin-bottom: 2rem;
 }
 
@@ -37,13 +44,13 @@
   text-align: left;
 }
 
-.header-table th,
-.line-table td {
+.table-header-text,
+.line-table-text {
   padding-block: 1rem;
 }
 
-.header-table th:first-child,
-.line-table td:first-child {
+.table-header-text:first-child,
+.line-table-text:first-child {
   padding-left: 2rem;
 }
 
@@ -58,4 +65,94 @@
   text-align: right;
   padding-left: 200px;
   padding-right: 2rem;
+}
+
+.line-table-text,
+.table-header-text {
+  font-size: 12px;
+}
+
+.modal {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  background: rgba(16, 15, 15, 0.56);
+}
+
+.container-exclusion-modal {
+  padding: 3.5rem;
+}
+
+.container-exclusion-modal,
+.container-new-contact-modal {
+  position: relative;
+  text-align: center;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.container-exclusion-closed {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+.exclusion-modal-title {
+  margin-bottom: 1.5rem;
+}
+
+.exclusion-modal-text {
+  font-size: 14px;
+}
+.exclusion-modal-btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-exclusion-modal {
+  width: 22.75rem;
+  margin-top: 2rem;
+  margin-bottom: 8px;
+}
+
+.disabled {
+  display: none !important;
+}
+
+.container-new-contact-modal {
+  padding: 56px 56px 75px;
+}
+
+.form-modal-contact {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.5rem;
+}
+
+.form-modal-contact input {
+  min-width: 364px;
+  border: 1px solid #e8e8e8;
+  padding-block: 1rem;
+  padding-left: 1rem;
+  color: #968b8b;
+}
+
+.modal-email {
+  margin-block: 1.1rem;
+}
+
+.btns-new-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 72px;
 }
