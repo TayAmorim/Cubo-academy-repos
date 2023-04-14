@@ -16,6 +16,10 @@ body {
   color: black;
 }
 
+input:focus {
+  border: 1px solid #1972a8;
+}
+
 .container {
   display: flex;
   height: 100vh;
@@ -54,6 +58,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   color: white;
+  cursor: pointer;
 }
 
 .btn-execute {
@@ -70,4 +75,5 @@ body {
 
 .new-register-link {
   color: var(---link);
+  cursor: pointer;
 }
