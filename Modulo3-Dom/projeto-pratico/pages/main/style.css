@@ -19,6 +19,7 @@ body {
 
 .icon-logout {
   margin-right: 2rem;
+  cursor: pointer;
 }
 
 .contact-container {
@@ -100,6 +101,7 @@ body {
   position: absolute;
   top: 24px;
   right: 24px;
+  cursor: pointer;
 }
 
 .modal-title {
