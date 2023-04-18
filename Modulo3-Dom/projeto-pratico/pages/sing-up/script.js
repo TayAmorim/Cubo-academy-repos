@@ -5,16 +5,24 @@ const btnClear = document.querySelector(".btn-cancel");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
   for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].value === "") {
+    if (inputs[i].value === "" || inputs[i].value === " ") {
       inputs[i].style.border = "1px solid red";
       return;
     }
     inputs[i].style.border = "1px solid transparent";
   }
-  location = "../main/index.html";
+  registerUser();
 });
+
+async function registerUser() {
+  const response = await api.post("/usuarios", {
+    nome: inputs[0].value,
+    email: "daniel.lopes@cubos.academy",
+    senha: "123456",
+  });
+  console.log(response);
+}
 
 btnClear.addEventListener("click", () => {
   for (let i = 0; i < inputs.length; i++) {
