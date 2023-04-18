@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.pokemon {
+  width: 300px;
+  text-align: center;
+  background: #FFC107;
+  border-radius: 16px;
+  padding: 16px;
+  border: 2px dashed #ef001d;
+}
