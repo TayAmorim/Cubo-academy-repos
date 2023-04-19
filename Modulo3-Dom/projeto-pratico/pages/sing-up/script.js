@@ -12,17 +12,32 @@ form.addEventListener("submit", (event) => {
     }
     inputs[i].style.border = "1px solid transparent";
   }
-  registerUser();
 });
 
 async function registerUser() {
-  const response = await api.post("/usuarios", {
-    nome: inputs[0].value,
-    email: "daniel.lopes@cubos.academy",
-    senha: "123456",
-  });
-  console.log(response);
+  try {
+    const response = await fetch(
+      "https://api-crud-user.pedagogico.cubos.academy/usuarios",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: "rretre",
+          email: "tay6.kelly@.com",
+          senha: "123456",
+        }),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
 }
+
+registerUser();
 
 btnClear.addEventListener("click", () => {
   for (let i = 0; i < inputs.length; i++) {
