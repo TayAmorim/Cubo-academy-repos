@@ -3,3 +3,8 @@ const api = axios.create({
   timeout: 10000,
   headers: { "Content-Type": "Application/json" },
 });
+
+async function users() {
+  const response = await api.get("/users");
+  return response;
+}
