@@ -1,13 +1,10 @@
 import "./App.css";
-import KelvinImg from "../src/assets/kelvin.png";
-import CharlesImg from "../src/assets/charles.png";
-import AnnasImg from "../src/assets/anna.png";
-import MarioImg from "../src/assets/mario.png";
+import Card from "../src/components/card";
 
-const user = [
+const users = [
   {
     id: 1,
-    img: { KelvinImg },
+    img: "../src/assets/kelvin.png",
     name: "Kelvin Costa",
     social: "@costa",
     followers: 140,
@@ -15,7 +12,7 @@ const user = [
   },
   {
     id: 2,
-    img: { CharlesImg },
+    img: "../src/assets/charles.png",
     name: "Charles Santos",
     social: "@charles.santos",
     followers: 302,
@@ -23,7 +20,7 @@ const user = [
   },
   {
     id: 3,
-    img: { AnnasImg },
+    img: "../src/assets/anna.png",
     name: "Anna Bia",
     social: "@anab",
     followers: 842,
@@ -31,7 +28,7 @@ const user = [
   },
   {
     id: 4,
-    img: { Mario },
+    img: "../src/assets/mario.png",
     name: "Mario Hisashi",
     social: "@hisashi",
     followers: 28,
@@ -41,8 +38,17 @@ const user = [
 
 function App() {
   return (
-    <div>
-      <h2>oi</h2>
+    <div className="container">
+      {users.map((user) => (
+        <Card
+          key={user.id}
+          img={user.img}
+          name={user.name}
+          social={user.social}
+          followers={user.followers}
+          following={user.following}
+        />
+      ))}
     </div>
   );
 }
