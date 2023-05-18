@@ -1,0 +1,41 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 70px 53px;
+  background-color: #ffff;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px 0px hsla(0, 0%, 0%, 0.25);
+}
+
+.closed-png {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.text-container {
+  text-align: center;
+  font-size: 18px;
+  max-width: 327px;
+  line-height: 24px;
+}
+
+.container button {
+  padding: 14px 50px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px hsla(0, 0%, 0%, 0.25);
+  cursor: pointer;
+}
+
+.red {
+  background-color: hsla(7, 81%, 63%, 1);
+}
+
+.purple {
+  background-color: hsla(241, 55%, 24%, 1);
+}
