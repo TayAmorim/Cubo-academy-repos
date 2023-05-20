@@ -3,20 +3,22 @@
 # Exercício de classe 🏫
 
 ## Lista
+
 Utilizando o projeto React da pasta "base" como base (ou criando um projeto a partir do comando `npx create-react-app nome-do-projeto`), siga as seguintes instruções:
 
 Crie um componente "Lista" que recebe uma propriedade itens e exibe uma lista
 
 ---
+
 ### DICAS:
 
 No exercício será necessário:
+
 - Criar a estrutura HTML geral no app.js
-- Criar o component Lista 
+- Criar o component Lista
 - Receber as propriedades
 
 ---
-
 
 Preencha a checklist para finalizar o exercício:
 
@@ -26,5 +28,3 @@ Preencha a checklist para finalizar o exercício:
 - [ ] Pushar os commits na sua branch na origem (`git push origin nome-da-branch`)
 
 ###### tags: `módulo 3` `front-end` `exercício de classe` `React`
-
-
