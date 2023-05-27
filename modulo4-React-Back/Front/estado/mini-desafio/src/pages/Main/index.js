@@ -34,9 +34,13 @@ function Main() {
     );
   }
 
+  function handleResetButton() {
+    setCards(CARDS);
+  }
+
   return (
     <div className="container">
-      <Sidebar element={cards} />
+      <Sidebar handleResetButton={handleResetButton} />
       <div className="cards-container">
         {cards.map((card) => (
           <div key={card.id} className="cards">
