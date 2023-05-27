@@ -1,0 +1,20 @@
+.sidebar {
+  background-color: black;
+  padding: 24px 32px;
+  height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-img {
+  margin: 0 auto;
+}
+.sidebar button {
+  background-color: #f0c551;
+  padding: 24px 58px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+}
