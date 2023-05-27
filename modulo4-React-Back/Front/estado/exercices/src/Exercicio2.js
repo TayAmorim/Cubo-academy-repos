@@ -9,14 +9,14 @@ function Exercicio2() {
   }
 
   return (
-    <diiv>
+    <div>
       <ul>
         {frutas.map((fruta) => (
           <li key={fruta}>{fruta}</li>
         ))}
       </ul>
       <button onClick={addfruta}>Adicionar</button>
-    </diiv>
+    </div>
   );
 }
 
