@@ -16,4 +16,30 @@ const listarIdAluno = (req, res) => {
   return res.json(alunoPesquisado);
 };
 
-module.exports = { listarAlunos, listarIdAluno };
+const cadastrarAluno = (req, res) => {
+  const { nome, sobrenome, idade, curso } = req.body;
+  if (!nome) {
+    return res.status(400).json({ message: "O nome é obrigatório" });
+  }
+  if (!sobrenome) {
+    return res.status(400).json({ message: "O email é obrigatório" });
+  }
+  if (!idade) {
+    return res.status(400).json({ message: "O email é obrigatório" });
+  }
+  if (!curso) {
+    return res.status(400).json({ message: "O email é obrigatório" });
+  }
+
+  const novoAluno = {
+    id: idAluno++,
+    nome,
+    sobrenome,
+    idade,
+    curso,
+  };
+  alunos.push(novoAluno);
+  return res.status(201).json(novoAluno);
+};
+
+module.exports = { listarAlunos, listarIdAluno, cadastrarAluno };
