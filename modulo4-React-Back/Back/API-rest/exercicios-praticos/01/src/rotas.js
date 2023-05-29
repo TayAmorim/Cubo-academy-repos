@@ -15,5 +15,6 @@ rotas.post(
   validacaoPropriedadesAluno,
   alunos.cadastrarAluno
 );
+rotas.delete("/alunos/:id", validacaoSenha, alunos.deletarAluno);
 
 module.exports = rotas;

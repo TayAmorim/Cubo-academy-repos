@@ -7,6 +7,9 @@ const listarAlunos = (req, res) => {
 const listarIdAluno = (req, res) => {
   const { id } = req.params;
 
+  if (!Number(id)) {
+    return res.status(400).json({ mensagem: "Id  deve ser um numero válido" });
+  }
   const alunoPesquisado = alunos.find((aluno) => aluno.id === Number(id));
 
   if (!alunoPesquisado) {
@@ -27,7 +30,23 @@ const cadastrarAluno = (req, res) => {
     curso,
   };
   alunos.push(novoAluno);
-  return res.status(201).json(novoAluno);
+  return res.status(201).json();
 };
 
-module.exports = { listarAlunos, listarIdAluno, cadastrarAluno };
+const deletarAluno = (req, res) => {
+  const { id } = req.params;
+
+  if (!Number(id)) {
+    return res.status(400).json({ mensagem: "Id  deve ser um numero válido" });
+  }
+  const alunoPesquisado = alunos.find((aluno) => aluno.id === Number(id));
+
+  if (!alunoPesquisado) {
+    return res.status(404).json({ mensagem: "Aluno não encontrado" });
+  }
+
+  alunos = alunos.filter((aluno) => aluno.id !== Number(id));
+  res.json(alunos);
+};
+
+module.exports = { listarAlunos, listarIdAluno, cadastrarAluno, deletarAluno };
