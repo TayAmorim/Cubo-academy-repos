@@ -1,10 +1,3 @@
-const convidados = [
-  "Carlos",
-  "Amanda",
-  "Fernanda",
-  "Juliana",
-  "Lucas",
-  "Roberto",
-];
+const convidados = [];
 
 module.exports = convidados;

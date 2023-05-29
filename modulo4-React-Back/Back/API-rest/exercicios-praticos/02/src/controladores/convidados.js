@@ -33,4 +33,24 @@ const adicionarConvidado = (req, res) => {
   }
 };
 
-module.exports = { consultarListaInteiraConvidados, adicionarConvidado };
+const deletarConvidado = (req, res) => {
+  const { nome } = req.params;
+
+  const convidadoPresente = convidados.find((convidado) => convidado === nome);
+  if (!convidadoPresente) {
+    return res.status(404).json({
+      mensagem:
+        "O nome do convidado a ser removido não existe na lista. Nenhum convidado foi removido.",
+    });
+  }
+  convidados = convidados.filter(
+    (convidado) => convidado !== convidadoPresente
+  );
+  return res.json({ mensagem: "Convidado removido." });
+};
+
+module.exports = {
+  consultarListaInteiraConvidados,
+  adicionarConvidado,
+  deletarConvidado,
+};
