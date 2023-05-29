@@ -46,7 +46,7 @@ const deletarAluno = (req, res) => {
   }
 
   alunos = alunos.filter((aluno) => aluno.id !== Number(id));
-  res.json(alunos);
+  return res.json(alunoPesquisado);
 };
 
 module.exports = { listarAlunos, listarIdAluno, cadastrarAluno, deletarAluno };
