@@ -21,4 +21,46 @@ const consultarLivroId = (req, res) => {
   return res.json(livroPesquisado);
 };
 
-module.exports = { consultarColecao, consultarLivroId };
+const adicionarLivro = (req, res) => {
+  const { titulo, autor, ano, numPaginas } = req.body;
+
+  const livro = {
+    id: idLivros++,
+    titulo,
+    autor,
+    ano,
+    numPaginas,
+  };
+
+  livros.push(livro);
+  return res.json(livro);
+};
+
+const substituirLIvro = (req, res) => {
+  const { id } = req.params;
+  const { titulo, autor, ano, numPaginas } = req.body;
+
+  const livroPesquisado = livros.find((livro) => livro.id === Number(id));
+
+  if (!livroPesquisado) {
+    return res.status(404).json({
+      mensagem: "Não existe livro a ser substituído para o ID informado.",
+    });
+  }
+
+  livroPesquisado.titulo = titulo;
+  livroPesquisado.autor = autor;
+  livroPesquisado.ano = ano;
+  livroPesquisado.numPaginas = numPaginas;
+
+  return res.json({
+    mensagem: "Livro substituído.",
+  });
+};
+
+module.exports = {
+  consultarColecao,
+  consultarLivroId,
+  adicionarLivro,
+  substituirLIvro,
+};
