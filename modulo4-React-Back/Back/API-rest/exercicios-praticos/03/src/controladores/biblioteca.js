@@ -58,9 +58,57 @@ const substituirLIvro = (req, res) => {
   });
 };
 
+const substituirPropLivro = (req, res) => {
+  const { id } = req.params;
+  const { titulo, autor, ano, numPaginas } = req.body;
+
+  const livroPesquisado = livros.find((livro) => livro.id === Number(id));
+
+  if (!livroPesquisado) {
+    return res.status(404).json({
+      mensagem: "Não existe livro a ser alterado para o ID informado.",
+    });
+  }
+  if (titulo) {
+    livroPesquisado.titulo = titulo;
+  }
+  if (autor) {
+    livroPesquisado.autor = autor;
+  }
+  if (ano) {
+    livroPesquisado.ano = ano;
+  }
+  if (numPaginas) {
+    livroPesquisado.numPaginas = numPaginas;
+  }
+  return res.json({
+    mensagem: "Livro alterado.",
+  });
+};
+
+const deletLivro = (req, res) => {
+  const { id } = req.params;
+
+  const livroPesquisado = livros.find((livro) => livro.id === Number(id));
+
+  if (!livroPesquisado) {
+    return res.status(404).json({
+      mensagem: "Não existe livro a ser removido para o ID informado.",
+    });
+  }
+
+  livros = livros.filter((livro) => livro !== livroPesquisado);
+
+  return res.json({
+    mensagem: "Livro removido.",
+  });
+};
+
 module.exports = {
   consultarColecao,
   consultarLivroId,
   adicionarLivro,
   substituirLIvro,
+  substituirPropLivro,
+  deletLivro,
 };
