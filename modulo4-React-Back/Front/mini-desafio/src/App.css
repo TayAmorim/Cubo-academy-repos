@@ -1,7 +1,7 @@
 .header-container {
   display: flex;
   justify-content: space-between;
-  padding-block: 32px;
+  padding: 32px;
   align-items: center;
   border-bottom: 1px solid #6a6363;
 }
@@ -26,4 +26,38 @@ h1 {
 .container-cards {
   display: flex;
   gap: 27px;
+}
+.control-playlist {
+  padding-left: 32px;
+  display: flex;
+  align-items: center;
+  padding-block: 30px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.21), rgba(0, 0, 0, 0.21)),
+    linear-gradient(180deg, #383535 0%, rgba(133, 130, 130, 0) 100%);
+}
+
+.control {
+  margin: 0 auto;
+}
+
+.control-btn {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+
+.control-visual {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+.control-visual .range-music {
+  width: 560px;
+}
+input[type="range"] {
+  margin: 4px 0;
+  width: 100%;
 }
