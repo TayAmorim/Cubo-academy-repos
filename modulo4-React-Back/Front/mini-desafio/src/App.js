@@ -11,14 +11,19 @@ import Next from "./assets/next.svg";
 
 function App() {
   const audioRef = useRef(null);
+  const inputRangeRef = useRef(null);
   const [title, settitle] = useState(null);
   const [artist, setArtist] = useState(null);
-  const [audioSrc, setAudioSrc] = useState();
+  const [audioSrc, setAudioSrc] = useState(null);
 
   function handleClickCard(music) {
     settitle(music.title);
     setArtist(music.artist);
-    setAudioSrc((audioRef.current.source = music.url));
+    setAudioSrc((audioRef.current.src = music.url));
+  }
+
+  function ClickPause() {
+    audioRef.current.pause();
   }
 
   return (
@@ -45,10 +50,8 @@ function App() {
             ))}
           </div>
         </section>
-        <audio ref={audioRef} autoPlay>
-          <source src={audioSrc} type="audio/mp3" />
-          seu navegador não suporta HTML5
-        </audio>
+        <audio ref={audioRef} src={audioSrc} autoPlay />
+
         <section className="control-playlist">
           <div className="info">
             <h2 className="info-music">{title}</h2>
@@ -58,13 +61,12 @@ function App() {
             <div className="control-btn">
               <img src={Stop} alt="" />
               <img src={Previous} alt="" />
-              <img src={Pause} alt="" />
+              <img onClick={ClickPause} src={Pause} alt="" />
               <img src={Next} alt="" />
-              <button onClick={() => console.log("oi")}>Play</button>
             </div>
             <div className="control-visual">
               <span>0</span>
-              <input className="range-music" type="range" />
+              <input ref={inputRangeRef} className="range-music" type="range" />
               <span>1:36</span>
             </div>
           </div>
