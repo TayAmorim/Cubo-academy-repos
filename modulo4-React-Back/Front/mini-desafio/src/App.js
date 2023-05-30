@@ -3,7 +3,7 @@ import Logo from "./assets/logo.svg";
 import Profile from "./assets/profile.jpg";
 import Musics from "./musics";
 import CardMusic from "./components/card";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Stop from "./assets/stop.svg";
 import Previous from "./assets/previous.svg";
 import Pause from "./assets/pause.svg";
@@ -11,6 +11,15 @@ import Next from "./assets/next.svg";
 
 function App() {
   const audioRef = useRef(null);
+  const [title, settitle] = useState(null);
+  const [artist, setArtist] = useState(null);
+  const [audioSrc, setAudioSrc] = useState();
+
+  function handleClickCard(music) {
+    settitle(music.title);
+    setArtist(music.artist);
+    setAudioSrc((audioRef.current.source = music.url));
+  }
 
   return (
     <div className="container">
@@ -31,21 +40,19 @@ function App() {
                 img={music.cover}
                 title={music.title}
                 description={music.description}
+                click={() => handleClickCard(music)}
               />
             ))}
           </div>
         </section>
-        <audio ref={audioRef}>
-          <source
-            src="https://storage.googleapis.com/pedagogico/frontend-files/aula-react-referencias-eventos/The%20Von%20Trapp%20Family%20Choir%20-%20Alge.mp3"
-            type="audio/mp3"
-          />
+        <audio ref={audioRef} autoPlay>
+          <source src={audioSrc} type="audio/mp3" />
           seu navegador não suporta HTML5
         </audio>
         <section className="control-playlist">
           <div className="info">
-            <p className="info-music">Violão acústico</p>
-            <p className="info-artist">Robert Mayer</p>
+            <h2 className="info-music">{title}</h2>
+            <p className="info-artist">{artist}</p>
           </div>
           <div className="control">
             <div className="control-btn">
@@ -53,6 +60,7 @@ function App() {
               <img src={Previous} alt="" />
               <img src={Pause} alt="" />
               <img src={Next} alt="" />
+              <button onClick={() => console.log("oi")}>Play</button>
             </div>
             <div className="control-visual">
               <span>0</span>

@@ -1,5 +1,6 @@
 .card {
   width: 260px;
+  cursor: pointer;
 }
 
 .card img {

@@ -47,6 +47,10 @@ h1 {
   align-items: center;
 }
 
+.control img {
+  cursor: pointer;
+}
+
 .control-visual {
   display: flex;
   align-items: center;
