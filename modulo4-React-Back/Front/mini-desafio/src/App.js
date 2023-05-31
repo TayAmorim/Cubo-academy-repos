@@ -55,6 +55,7 @@ function App() {
   }
 
   function handlePreviousMusic() {
+    setControlPlay(Play);
     musicFind = Musics.find((music) => music.id === musicId - 1);
     if (!musicFind) {
       musicFind = Musics.find((music) => music.id === musicsLength);
@@ -66,13 +67,13 @@ function App() {
   }
 
   function handleNextMusic() {
+    setControlPlay(Play);
     musicFind = Musics.find((music) => music.id === musicId + 1);
     let firstMusic = Musics[0].id;
 
     if (!musicFind) {
       musicFind = Musics.find((music) => music.id === firstMusic);
     }
-
     setMuiscId(musicFind.id);
     setAudioSrc(musicFind.url);
     settitle(musicFind.title);
@@ -88,61 +89,60 @@ function App() {
           <p>Bem Vinda, Tayanna.</p>
         </div>
       </header>
-      <div>
-        <section className="playList">
-          <h1>The best play list</h1>
-          <div className="container-cards">
-            {Musics.map((music) => (
-              <CardMusic
-                key={music.id}
-                img={music.cover}
-                title={music.title}
-                description={music.description}
-                click={() => handleClickCard(music)}
-              />
-            ))}
-          </div>
-        </section>
+
+      <section className="playlist">
+        <h1>The best play list</h1>
+        <div className="container-cards">
+          {Musics.map((music) => (
+            <CardMusic
+              key={music.id}
+              img={music.cover}
+              title={music.title}
+              description={music.description}
+              click={() => handleClickCard(music)}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="control-playlist">
         <audio
           onTimeUpdate={(event) => handleChangeAudio(event)}
           ref={audioRef}
           src={audioSrc}
           onDurationChange={(event) =>
-            setAudioDuration((event.target.duration / 60).toFixed(1))
+            setAudioDuration((event.target.duration / 60).toFixed(2))
           }
         />
-
-        <section className="control-playlist">
-          <div className="info">
-            <h2 className="info-music">{title}</h2>
-            <p className="info-artist">{artist}</p>
+        <div className="info">
+          <h2 className="info-music">{title}</h2>
+          <p className="info-artist">{artist}</p>
+        </div>
+        <div className="control">
+          <div className="control-btn">
+            <img onClick={handleClickStop} src={Stop} alt="" />
+            <img src={Previous} onClick={handlePreviousMusic} alt="" />
+            <img
+              onClick={controlPlay === Play ? ClickPlay : CliCkPause}
+              src={controlPlay}
+              alt=""
+            />
+            <img src={Next} onClick={handleNextMusic} alt="" />
           </div>
-          <div className="control">
-            <div className="control-btn">
-              <img onClick={handleClickStop} src={Stop} alt="" />
-              <img src={Previous} onClick={handlePreviousMusic} alt="" />
-              <img
-                onClick={controlPlay === Play ? ClickPlay : CliCkPause}
-                src={controlPlay}
-                alt=""
-              />
-              <img src={Next} onClick={handleNextMusic} alt="" />
-            </div>
-            <div className="control-visual">
-              <span>{audioTime}</span>
-              <input
-                max={audioDuration}
-                ref={inputRangeRef}
-                className="range-music"
-                type="range"
-                value={inputValue}
-                onChange={() => setInputValue(audioTime)}
-              />
-              <span>{audioDuration}</span>
-            </div>
+          <div className="control-visual">
+            <span>{String(audioTime).replace(".", ":")}</span>
+            <input
+              max={audioDuration}
+              ref={inputRangeRef}
+              className="range-music"
+              type="range"
+              value={inputValue}
+              onChange={(e) => console.log(e.target)}
+            />
+            <span>{String(audioDuration).replace(".", ":")}</span>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -9,6 +9,8 @@ body {
   background: linear-gradient(180deg, #0c0505 0%, #3a3535 47.92%, #5e5858 100%);
   background-repeat: no-repeat;
   color: white;
+
+  min-height: 100vh;
 }
 
 code {
