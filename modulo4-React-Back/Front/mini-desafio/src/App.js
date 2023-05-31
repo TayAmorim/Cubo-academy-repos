@@ -15,14 +15,16 @@ function App() {
   const inputRangeRef = useRef(null);
   const [title, settitle] = useState(null);
   const [artist, setArtist] = useState(null);
-  const [audioSrc, setAudioSrc] = useState(null);
+  const [audioSrc, setAudioSrc] = useState();
   const [controlPlay, setControlPlay] = useState(Play);
+  const [audioDuration, setAudioDuration] = useState(0);
+  const [audioTime, setAudioTime] = useState(0);
 
   function handleClickCard(music) {
+    setAudioSrc(music.url);
     setControlPlay(Play);
     settitle(music.title);
     setArtist(music.artist);
-    setAudioSrc((audioRef.current.src = music.url));
   }
 
   function ClickPlay() {
@@ -59,7 +61,16 @@ function App() {
             ))}
           </div>
         </section>
-        <audio ref={audioRef} src={audioSrc} />
+        <audio
+          onTimeUpdate={(event) =>
+            setAudioTime((event.target.currentTime / 60).toFixed(2))
+          }
+          ref={audioRef}
+          src={audioSrc}
+          onDurationChange={(event) =>
+            setAudioDuration((event.target.duration / 60).toFixed(1))
+          }
+        />
 
         <section className="control-playlist">
           <div className="info">
@@ -78,9 +89,9 @@ function App() {
               <img src={Next} alt="" />
             </div>
             <div className="control-visual">
-              <span>0</span>
+              <span>{audioTime}</span>
               <input ref={inputRangeRef} className="range-music" type="range" />
-              <span>1:36</span>
+              <span>{audioDuration}</span>
             </div>
           </div>
         </section>
