@@ -22,6 +22,9 @@ function App() {
   const [inputValue, setInputValue] = useState(0);
   const [musicId, setMuiscId] = useState(0);
 
+  let musicFind;
+  const musicsLength = Musics.length;
+
   function handleClickCard(music) {
     setAudioSrc(music.url);
     setMuiscId(music.id);
@@ -52,10 +55,25 @@ function App() {
   }
 
   function handlePreviousMusic() {
-    let musicFind = Musics.find((music) => music.id === musicId - 1);
-    if (musicId === 1) {
-      musicFind = Musics.find((music) => music.id === 4);
+    musicFind = Musics.find((music) => music.id === musicId - 1);
+    if (!musicFind) {
+      musicFind = Musics.find((music) => music.id === musicsLength);
     }
+    setMuiscId(musicFind.id);
+    setAudioSrc(musicFind.url);
+    settitle(musicFind.title);
+    setArtist(musicFind.artist);
+  }
+
+  function handleNextMusic() {
+    musicFind = Musics.find((music) => music.id === musicId + 1);
+    let firstMusic = Musics[0].id;
+
+    if (!musicFind) {
+      musicFind = Musics.find((music) => music.id === firstMusic);
+    }
+
+    setMuiscId(musicFind.id);
     setAudioSrc(musicFind.url);
     settitle(musicFind.title);
     setArtist(musicFind.artist);
@@ -108,7 +126,7 @@ function App() {
                 src={controlPlay}
                 alt=""
               />
-              <img src={Next} alt="" />
+              <img src={Next} onClick={handleNextMusic} alt="" />
             </div>
             <div className="control-visual">
               <span>{audioTime}</span>
