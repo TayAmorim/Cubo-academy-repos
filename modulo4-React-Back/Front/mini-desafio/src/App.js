@@ -1,7 +1,7 @@
 import "./App.css";
 import Logo from "./assets/logo.svg";
 import Profile from "./assets/profile.jpg";
-import Musics from "./musics";
+import MUSICS from "./musics";
 import CardMusic from "./components/card";
 import { useRef, useState } from "react";
 import Stop from "./assets/stop.svg";
@@ -12,74 +12,74 @@ import Next from "./assets/next.svg";
 
 function App() {
   const audioRef = useRef(null);
-  const inputRangeRef = useRef(null);
-  const [title, settitle] = useState(null);
-  const [artist, setArtist] = useState(null);
-  const [audioSrc, setAudioSrc] = useState();
-  const [controlPlay, setControlPlay] = useState(Play);
+  const [currentControlButtonIcon, setCurrentControlButtonIcon] =
+    useState(Play);
   const [audioDuration, setAudioDuration] = useState(0);
   const [audioTime, setAudioTime] = useState(0);
   const [inputValue, setInputValue] = useState(0);
-  const [musicId, setMuiscId] = useState(0);
-
-  let musicFind;
-  const musicsLength = Musics.length;
+  const [currentMusic, setCurrentMusic] = useState({});
+  const [userClicking, setUserClicking] = useState(false);
 
   function handleClickCard(music) {
-    setAudioSrc(music.url);
-    setMuiscId(music.id);
-    setControlPlay(Play);
-    settitle(music.title);
-    setArtist(music.artist);
+    setCurrentControlButtonIcon(Play);
+    setCurrentMusic(music);
   }
 
   function ClickPlay() {
     audioRef.current.play();
-    setControlPlay(Pause);
+    setCurrentControlButtonIcon(Pause);
   }
 
-  function CliCkPause() {
+  function ClickPause() {
     audioRef.current.pause();
-    setControlPlay(Play);
+    setCurrentControlButtonIcon(Play);
   }
 
   function handleChangeAudio(event) {
     setAudioTime((event.target.currentTime / 60).toFixed(2));
-    setInputValue(audioTime);
+    if (!userClicking) {
+      setInputValue(audioTime);
+    }
   }
 
   function handleClickStop() {
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
-    setControlPlay(Play);
+    setCurrentControlButtonIcon(Play);
   }
 
   function handlePreviousMusic() {
-    setControlPlay(Play);
-    musicFind = Musics.find((music) => music.id === musicId - 1);
-    if (!musicFind) {
-      musicFind = Musics.find((music) => music.id === musicsLength);
-    }
-    setMuiscId(musicFind.id);
-    setAudioSrc(musicFind.url);
-    settitle(musicFind.title);
-    setArtist(musicFind.artist);
+    setCurrentControlButtonIcon(Play);
+    const hasPreviusMusic = MUSICS.find(
+      (music) => music.id === currentMusic.id - 1
+    );
+
+    setCurrentMusic(
+      hasPreviusMusic
+        ? hasPreviusMusic
+        : MUSICS.find((music) => music.id === MUSICS.length)
+    );
   }
 
   function handleNextMusic() {
-    setControlPlay(Play);
-    musicFind = Musics.find((music) => music.id === musicId + 1);
-    let firstMusic = Musics[0].id;
+    setCurrentControlButtonIcon(Play);
+    const hasNextMusic = MUSICS.find(
+      (music) => music.id === currentMusic.id + 1
+    );
+    const firstMusicId = MUSICS[0].id;
 
-    if (!musicFind) {
-      musicFind = Musics.find((music) => music.id === firstMusic);
-    }
-    setMuiscId(musicFind.id);
-    setAudioSrc(musicFind.url);
-    settitle(musicFind.title);
-    setArtist(musicFind.artist);
+    setCurrentMusic(
+      hasNextMusic
+        ? hasNextMusic
+        : MUSICS.find((music) => music.id === firstMusicId)
+    );
   }
-
+  const handleCurrentTimeChange = ({ target }) => {
+    const { value } = target;
+    setInputValue(value);
+    setAudioTime(value);
+    audioRef.current.currentTime = value * 60;
+  };
   return (
     <div className="container">
       <header className="header-container">
@@ -93,13 +93,13 @@ function App() {
       <section className="playlist">
         <h1>The best play list</h1>
         <div className="container-cards">
-          {Musics.map((music) => (
+          {MUSICS.map((music) => (
             <CardMusic
               key={music.id}
               img={music.cover}
               title={music.title}
               description={music.description}
-              click={() => handleClickCard(music)}
+              handleClick={() => handleClickCard(music)}
             />
           ))}
         </div>
@@ -107,24 +107,35 @@ function App() {
 
       <section className="control-playlist">
         <audio
-          onTimeUpdate={(event) => handleChangeAudio(event)}
+          onTimeUpdate={handleChangeAudio}
           ref={audioRef}
-          src={audioSrc}
+          src={currentMusic.url}
           onDurationChange={(event) =>
             setAudioDuration((event.target.duration / 60).toFixed(2))
           }
         />
         <div className="info">
-          <h2 className="info-music">{title}</h2>
-          <p className="info-artist">{artist}</p>
+          <h2 className="info-music">{currentMusic.title}</h2>
+          <p className="info-artist">{currentMusic.artist}</p>
         </div>
         <div className="control">
           <div className="control-btn">
-            <img onClick={handleClickStop} src={Stop} alt="" />
+            <img
+              role="button"
+              tabIndex={0}
+              onClick={handleClickStop}
+              src={Stop}
+              alt=""
+              title="Parar musica"
+            />
             <img src={Previous} onClick={handlePreviousMusic} alt="" />
             <img
-              onClick={controlPlay === Play ? ClickPlay : CliCkPause}
-              src={controlPlay}
+              onClick={
+                currentControlButtonIcon === Play ? ClickPlay : ClickPause
+              }
+              role="button"
+              tabIndex={1}
+              src={currentControlButtonIcon}
               alt=""
             />
             <img src={Next} onClick={handleNextMusic} alt="" />
@@ -133,11 +144,13 @@ function App() {
             <span>{String(audioTime).replace(".", ":")}</span>
             <input
               max={audioDuration}
-              ref={inputRangeRef}
+              step={0.01}
               className="range-music"
               type="range"
               value={inputValue}
-              onChange={(e) => console.log(e.target)}
+              onChange={handleCurrentTimeChange}
+              onMouseDown={() => setUserClicking(true)}
+              onMouseUp={() => setUserClicking(false)}
             />
             <span>{String(audioDuration).replace(".", ":")}</span>
           </div>
