@@ -19,6 +19,7 @@ function App() {
   const [controlPlay, setControlPlay] = useState(Play);
   const [audioDuration, setAudioDuration] = useState(0);
   const [audioTime, setAudioTime] = useState(0);
+  const [inputValue, setInputValue] = useState(0);
 
   function handleClickCard(music) {
     setAudioSrc(music.url);
@@ -34,6 +35,17 @@ function App() {
 
   function CliCkPause() {
     audioRef.current.pause();
+    setControlPlay(Play);
+  }
+
+  function handleChangeAudio(event) {
+    setAudioTime((event.target.currentTime / 60).toFixed(2));
+    setInputValue(audioTime);
+  }
+
+  function handleClickStop() {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
     setControlPlay(Play);
   }
 
@@ -62,9 +74,7 @@ function App() {
           </div>
         </section>
         <audio
-          onTimeUpdate={(event) =>
-            setAudioTime((event.target.currentTime / 60).toFixed(2))
-          }
+          onTimeUpdate={(event) => handleChangeAudio(event)}
           ref={audioRef}
           src={audioSrc}
           onDurationChange={(event) =>
@@ -79,7 +89,7 @@ function App() {
           </div>
           <div className="control">
             <div className="control-btn">
-              <img src={Stop} alt="" />
+              <img onClick={handleClickStop} src={Stop} alt="" />
               <img src={Previous} alt="" />
               <img
                 onClick={controlPlay === Play ? ClickPlay : CliCkPause}
@@ -90,7 +100,14 @@ function App() {
             </div>
             <div className="control-visual">
               <span>{audioTime}</span>
-              <input ref={inputRangeRef} className="range-music" type="range" />
+              <input
+                max={audioDuration}
+                ref={inputRangeRef}
+                className="range-music"
+                type="range"
+                value={inputValue}
+                onChange={() => setInputValue(audioTime)}
+              />
               <span>{audioDuration}</span>
             </div>
           </div>

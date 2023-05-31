@@ -70,7 +70,7 @@ h1 {
 .control-visual .range-music {
   width: 560px;
 }
-input[type="range"] {
+.range-music {
   margin: 4px 0;
   width: 100%;
 }
