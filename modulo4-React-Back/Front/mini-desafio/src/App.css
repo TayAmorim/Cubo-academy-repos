@@ -1,3 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -30,10 +35,14 @@ h1 {
 .control-playlist {
   padding-left: 32px;
   display: flex;
-  align-items: center;
-  padding-block: 30px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.21), rgba(0, 0, 0, 0.21)),
-    linear-gradient(180deg, #383535 0%, rgba(133, 130, 130, 0) 100%);
+  align-self: center;
+  padding-block: 15px;
+  background: linear-gradient(180deg, #383535 0%, rgba(133, 130, 130, 0) 100%);
+  background-repeat: no-repeat;
+}
+
+.playList-container {
+  display: flex;
 }
 
 .control {
@@ -54,7 +63,7 @@ h1 {
 .control-visual {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
   gap: 8px;
 }
 

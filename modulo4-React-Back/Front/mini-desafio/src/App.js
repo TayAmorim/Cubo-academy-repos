@@ -6,6 +6,7 @@ import CardMusic from "./components/card";
 import { useRef, useState } from "react";
 import Stop from "./assets/stop.svg";
 import Previous from "./assets/previous.svg";
+import Play from "./assets/play.svg";
 import Pause from "./assets/pause.svg";
 import Next from "./assets/next.svg";
 
@@ -15,15 +16,23 @@ function App() {
   const [title, settitle] = useState(null);
   const [artist, setArtist] = useState(null);
   const [audioSrc, setAudioSrc] = useState(null);
+  const [controlPlay, setControlPlay] = useState(Play);
 
   function handleClickCard(music) {
+    setControlPlay(Play);
     settitle(music.title);
     setArtist(music.artist);
     setAudioSrc((audioRef.current.src = music.url));
   }
 
-  function ClickPause() {
+  function ClickPlay() {
+    audioRef.current.play();
+    setControlPlay(Pause);
+  }
+
+  function CliCkPause() {
     audioRef.current.pause();
+    setControlPlay(Play);
   }
 
   return (
@@ -50,7 +59,7 @@ function App() {
             ))}
           </div>
         </section>
-        <audio ref={audioRef} src={audioSrc} autoPlay />
+        <audio ref={audioRef} src={audioSrc} />
 
         <section className="control-playlist">
           <div className="info">
@@ -61,7 +70,11 @@ function App() {
             <div className="control-btn">
               <img src={Stop} alt="" />
               <img src={Previous} alt="" />
-              <img onClick={ClickPause} src={Pause} alt="" />
+              <img
+                onClick={controlPlay === Play ? ClickPlay : CliCkPause}
+                src={controlPlay}
+                alt=""
+              />
               <img src={Next} alt="" />
             </div>
             <div className="control-visual">
