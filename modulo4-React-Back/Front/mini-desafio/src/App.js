@@ -20,9 +20,11 @@ function App() {
   const [audioDuration, setAudioDuration] = useState(0);
   const [audioTime, setAudioTime] = useState(0);
   const [inputValue, setInputValue] = useState(0);
+  const [musicId, setMuiscId] = useState(0);
 
   function handleClickCard(music) {
     setAudioSrc(music.url);
+    setMuiscId(music.id);
     setControlPlay(Play);
     settitle(music.title);
     setArtist(music.artist);
@@ -47,6 +49,16 @@ function App() {
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
     setControlPlay(Play);
+  }
+
+  function handlePreviousMusic() {
+    let musicFind = Musics.find((music) => music.id === musicId - 1);
+    if (musicId === 1) {
+      musicFind = Musics.find((music) => music.id === 4);
+    }
+    setAudioSrc(musicFind.url);
+    settitle(musicFind.title);
+    setArtist(musicFind.artist);
   }
 
   return (
@@ -90,7 +102,7 @@ function App() {
           <div className="control">
             <div className="control-btn">
               <img onClick={handleClickStop} src={Stop} alt="" />
-              <img src={Previous} alt="" />
+              <img src={Previous} onClick={handlePreviousMusic} alt="" />
               <img
                 onClick={controlPlay === Play ? ClickPlay : CliCkPause}
                 src={controlPlay}
