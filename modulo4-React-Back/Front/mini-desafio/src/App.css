@@ -4,6 +4,12 @@
   min-height: 100vh;
 }
 
+.control-btn img:focus-visible {
+  outline: none;
+  border: 2px solid #e6007a;
+  padding: 2px;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
