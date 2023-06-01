@@ -1,6 +1,23 @@
 .card {
   width: 260px;
   cursor: pointer;
+  scale: 1;
+  transition: all 0.1;
+}
+
+.card:hover {
+  scale: 0.97;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: 400;
+}
+
+.card-text:nth-child(2) {
+  width: 260px;
 }
 
 .card img {

@@ -5,8 +5,10 @@ function cardMusic({ title, img, description, handleClick }) {
   return (
     <div onClick={handleClick} className="card">
       <img src={img} alt="" />
-      <p>{title}</p>
-      <p>{description}</p>
+      <div className="card-text">
+        <p>{title}</p>
+        <p>{description}</p>
+      </div>
     </div>
   );
 }

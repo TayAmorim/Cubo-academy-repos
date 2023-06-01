@@ -45,12 +45,14 @@ function App() {
   function handleClickStop() {
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
+    setInputValue(audioRef.current.currentTime);
     setCurrentControlButtonIcon(Play);
   }
 
   function handlePreviousMusic() {
-    audioRef.current.pause();
     audioRef.current.currentTime = 0;
+
+    audioRef.current.pause();
     setCurrentControlButtonIcon(Play);
     const hasPreviusMusic = MUSICS.find(
       (music) => music.id === currentMusic.id - 1
@@ -129,10 +131,17 @@ function App() {
               tabIndex={0}
               onClick={handleClickStop}
               src={Stop}
-              alt=""
+              alt="button parar musica"
               title="Parar musica"
             />
-            <img src={Previous} onClick={handlePreviousMusic} alt="" />
+            <img
+              role="button"
+              tabIndex={3}
+              src={Previous}
+              onClick={handlePreviousMusic}
+              alt="Button volatar musica"
+              title="Voltar musica"
+            />
             <img
               onClick={
                 currentControlButtonIcon === Play ? ClickPlay : ClickPause
@@ -140,9 +149,17 @@ function App() {
               role="button"
               tabIndex={1}
               src={currentControlButtonIcon}
-              alt=""
+              alt="button play na musica"
+              title="Play musica"
             />
-            <img src={Next} onClick={handleNextMusic} alt="" />
+            <img
+              role="button"
+              tabIndex={2}
+              src={Next}
+              onClick={handleNextMusic}
+              alt=""
+              title="Proxima musica"
+            />
           </div>
           <div className="control-visual">
             <span>{String(audioTime).replace(".", ":")}</span>
