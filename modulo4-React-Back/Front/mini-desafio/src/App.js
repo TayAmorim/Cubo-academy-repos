@@ -49,6 +49,8 @@ function App() {
   }
 
   function handlePreviousMusic() {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
     setCurrentControlButtonIcon(Play);
     const hasPreviusMusic = MUSICS.find(
       (music) => music.id === currentMusic.id - 1
@@ -62,6 +64,8 @@ function App() {
   }
 
   function handleNextMusic() {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
     setCurrentControlButtonIcon(Play);
     const hasNextMusic = MUSICS.find(
       (music) => music.id === currentMusic.id + 1
