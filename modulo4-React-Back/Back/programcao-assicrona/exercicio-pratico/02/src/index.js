@@ -1,7 +1,6 @@
 const express = require("express");
 const { listarPokemons, detalharPokemon } = require("utils-playground");
 const app = express();
-
 app.use(express.json());
 
 app.get("/pokemon", async (req, res) => {
