@@ -10,9 +10,15 @@ function Main() {
   });
 
   const [displayPassword, SetDisplayPassword] = useState(false);
+  const [messageErro, setMessageErro] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    if (form.email === "" || form.password === "") {
+      return setMessageErro("Todos os inputs precisam estar preenchidos");
+    }
+    setMessageErro("");
     console.log(`Seja bem vindo ${form.email}`);
   }
   function getFormValues({ target }) {
@@ -23,7 +29,6 @@ function Main() {
 
   function showPassWords() {
     SetDisplayPassword(!displayPassword);
-    console.log(displayPassword);
   }
 
   return (
@@ -37,20 +42,23 @@ function Main() {
           placeholder="E-mail"
           onChange={getFormValues}
         />
-        <input
-          type={displayPassword ? "tex" : "password"}
-          name="password"
-          placeholder="Senha"
-          value={form.password}
-          id="password"
-          onChange={getFormValues}
-        />
-        <img
-          className="password-icon"
-          src={displayPassword ? OpenEye : CloseEye}
-          alt="mostrar senha"
-          onClick={showPassWords}
-        />
+        <div className="wrapper-password">
+          <input
+            type={displayPassword ? "tex" : "password"}
+            name="password"
+            placeholder="Senha"
+            value={form.password}
+            id="password"
+            onChange={getFormValues}
+          />
+          <img
+            className="password-icon"
+            src={displayPassword ? OpenEye : CloseEye}
+            alt="mostrar senha"
+            onClick={showPassWords}
+          />
+        </div>
+        {messageErro && <span className="erro">{messageErro}</span>}
         <button className="btn-send" type="submit">
           Enviar
         </button>

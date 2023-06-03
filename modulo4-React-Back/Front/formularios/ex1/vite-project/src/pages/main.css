@@ -10,22 +10,35 @@
   border-radius: 4px;
 }
 
+.erro {
+  padding-top: 10px;
+  font-size: 12px;
+}
+
 .login {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: relative;
 }
 
-.login input {
+.wrapper-password,
+input[type="email"] {
+  border: 2px solid lightgray;
   padding: 10px;
 }
 
+.wrapper-password {
+  display: flex;
+  justify-content: space-between;
+}
+
+#password {
+  outline: none;
+  border: none;
+}
+
 .password-icon {
-  position: absolute;
   width: 20px;
-  bottom: 65px;
-  right: 10px;
   cursor: pointer;
 }
 
