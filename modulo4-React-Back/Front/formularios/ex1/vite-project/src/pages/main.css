@@ -4,39 +4,35 @@
   padding: 2rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.wrapper {
+  border: 1px solid lightgray;
+  padding: 35px;
+  border-radius: 4px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.login input {
+  padding: 10px;
 }
 
-.card {
-  padding: 2em;
+.password-icon {
+  position: absolute;
+  width: 20px;
+  bottom: 65px;
+  right: 10px;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.btn-send {
+  border: none;
+  padding: 10px;
+  background: purple;
+  color: white;
+  border-radius: 4px;
 }
