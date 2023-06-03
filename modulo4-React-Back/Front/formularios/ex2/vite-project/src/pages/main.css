@@ -1,0 +1,61 @@
+.wrapper-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-wrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-login {
+  display: flex;
+  margin-top: 32px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-login input {
+  min-width: 470px;
+  padding: 16px;
+  border: 1px solid #e8e8e8;
+}
+
+input[type="password"] {
+  outline: none;
+  border: none;
+}
+
+.wrapper-password {
+  display: flex;
+  border: 1px solid #e8e8e8;
+}
+
+.wrapper-password img {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+}
+
+.backround-wrapper {
+  height: 100vh;
+  display: flex;
+}
+.backround-wrapper img {
+  width: 100%;
+}
+.btn {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+}
+.send {
+  margin-top: 60px;
+  background-color: #2a4d77;
+}
+.cancel {
+  background-color: hsla(356, 97%, 50%, 0.65);
+  margin-bottom: 90px;
+}
