@@ -1,0 +1,33 @@
+.form-wrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-login {
+  display: flex;
+  margin-top: 32px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-login input {
+  min-width: 470px;
+  padding: 16px;
+  border: 1px solid #e8e8e8;
+}
+
+input[type="password"] {
+  outline: none;
+  border: none;
+}
+
+.wrapper-password {
+  display: flex;
+  border: 1px solid #e8e8e8;
+}
+
+.wrapper-password img {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+}
