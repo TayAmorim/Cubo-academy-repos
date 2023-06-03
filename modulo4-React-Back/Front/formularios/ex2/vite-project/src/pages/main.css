@@ -52,10 +52,14 @@ input[type="password"] {
   color: #ffffff;
 }
 .send {
-  margin-top: 60px;
+  margin-top: 10px;
   background-color: #2a4d77;
 }
 .cancel {
   background-color: hsla(356, 97%, 50%, 0.65);
   margin-bottom: 90px;
+}
+
+.erro {
+  color: red;
 }

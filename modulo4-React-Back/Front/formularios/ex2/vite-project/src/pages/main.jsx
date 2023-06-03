@@ -10,17 +10,41 @@ function Main() {
     password: "",
   });
 
+  const [mensageErro, setMensageErro] = useState("");
+
   function inputChange({ target }) {
     const update = target.name;
     const value = target.value;
     setForm({ ...form, [update]: value });
   }
 
+  function handleChangeForm(event) {
+    event.preventDefault();
+    setMensageErro("");
+    const keysForm = Object.keys(form);
+    const inputsInvalid = keysForm.filter((key) => {
+      return form[key] === "";
+    });
+    if (!inputsInvalid.length) {
+      return setMensageErro("");
+    }
+    if (inputsInvalid.length === keysForm.length) {
+      return setMensageErro("Todos os campos precisam estar preenchidos");
+    }
+    if (inputsInvalid.length === 1) {
+      return setMensageErro(`O campo ${inputsInvalid} precisa esta preenchido`);
+    }
+    const inputEmpety = inputsInvalid.join(", ");
+    return setMensageErro(
+      `Os campos ${inputEmpety} precisam estar preenchidos`
+    );
+  }
+
   return (
     <div className="wrapper-center">
       <div className="form-wrapper">
         <h1>Cadastre-se</h1>
-        <form className="form-login">
+        <form onSubmit={handleChangeForm} className="form-login">
           <input
             onChange={inputChange}
             value={form.name}
@@ -28,11 +52,24 @@ function Main() {
             name="name"
             placeholder="Nome"
           />
-          <input type="email" name="email" placeholder="E-mail" />
+          <input
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            onChange={inputChange}
+            value={form.email}
+          />
           <div className="wrapper-password">
-            <input type="password" name="password" placeholder="Senha" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Senha"
+              onChange={inputChange}
+              value={form.password}
+            />
             <img src={OpenEye} alt="Icone de mostrar a senha" />
           </div>
+          {mensageErro && <span className="erro">{mensageErro}</span>}
           <button className="btn send" type="submit">
             CADASTRAR
           </button>
