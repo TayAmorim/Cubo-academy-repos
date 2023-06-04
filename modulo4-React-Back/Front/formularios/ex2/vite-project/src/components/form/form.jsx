@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import "./form.css";
 import { useState } from "react";
 import OpenEye from "../../assets/open-eye.svg";
+import CloseEye from "../../assets/close-eye.svg";
 
 function Form({ setRegistration }) {
   const [form, setForm] = useState({
@@ -10,6 +12,7 @@ function Form({ setRegistration }) {
   });
 
   const [mensageErro, setMensageErro] = useState("");
+  const [iconPassworld, SetIconPassworld] = useState(false);
 
   function inputChange({ target }) {
     const update = target.name;
@@ -43,6 +46,19 @@ function Form({ setRegistration }) {
       );
     }
   }
+
+  function showPassworld() {
+    SetIconPassworld(!iconPassworld);
+  }
+
+  function clearForm() {
+    setForm({
+      name: "",
+      email: "",
+      password: "",
+    });
+    setMensageErro("");
+  }
   return (
     <div className="form-wrapper">
       <h1>Cadastre-se</h1>
@@ -63,19 +79,24 @@ function Form({ setRegistration }) {
         />
         <div className="wrapper-password">
           <input
-            type="password"
+            id="password"
+            type={iconPassworld ? "text" : "password"}
             name="password"
             placeholder="Senha"
             onChange={inputChange}
             value={form.password}
           />
-          <img src={OpenEye} alt="Icone de mostrar a senha" />
+          <img
+            onClick={showPassworld}
+            src={iconPassworld ? OpenEye : CloseEye}
+            alt="Icone de mostrar a senha"
+          />
         </div>
         {mensageErro && <span className="erro">{mensageErro}</span>}
         <button className="btn send" type="submit">
           CADASTRAR
         </button>
-        <button className="btn cancel" type="button">
+        <button onClick={clearForm} className="btn cancel" type="button">
           CANCELAR
         </button>
       </form>

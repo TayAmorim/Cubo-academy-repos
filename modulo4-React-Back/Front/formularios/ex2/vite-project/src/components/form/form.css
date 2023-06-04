@@ -16,7 +16,7 @@
   border: 1px solid #e8e8e8;
 }
 
-input[type="password"] {
+#password {
   outline: none;
   border: none;
 }

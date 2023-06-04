@@ -1,0 +1,8 @@
+.wrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wrapper img {
+  max-height: 600px;
+}
