@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "cep": "52041-550",
+    "logradouro": "Rua Dona Julieta",
+    "complemento": "",
+    "bairro": "Encruzilhada",
+    "localidade": "Recife",
+    "uf": "PE",
+    "ibge": "2611606",
+    "gia": "",
+    "ddd": "81",
+    "siafi": "2531"
+  },
+  {
+    "cep": "54460-280",
+    "logradouro": "Avenida Ulisses Montarroyos",
+    "complemento": "de 1/2 a 99998/99999",
+    "bairro": "Barra de Jangada",
+    "localidade": "Jaboatão dos Guararapes",
+    "uf": "PE",
+    "ibge": "2607901",
+    "gia": "",
+    "ddd": "81",
+    "siafi": "2457"
+  },
+  {
+    "cep": "43800-993",
+    "logradouro": "Rua Frei Caneca",
+    "complemento": "20",
+    "bairro": "",
+    "localidade": "Candeias",
+    "uf": "BA",
+    "ibge": "2906501",
+    "gia": "",
+    "ddd": "71",
+    "siafi": "3429"
+  }
+]
