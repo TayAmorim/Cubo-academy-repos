@@ -24,39 +24,43 @@ const pegarEstadoEcalcularFrete = async (req, res) => {
   const produtoFind = produtos.find(
     (produto) => produto.id === Number(idProduto)
   );
+  try {
+    const estado = await getStateFromZipcode(cep);
+    let percentual = 12 / 100;
+    if (
+      estado === "BA" ||
+      estado === "SE" ||
+      estado === "AL" ||
+      estado === "PE" ||
+      estado === "PB"
+    ) {
+      percentual = 10 / 100;
+    }
+    if (estado === "SP" || estado === "RJ") {
+      percentual = 15 / 100;
+    }
+    const calculoDeFrete = produtoFind.valor * percentual;
 
-  if (!produtoFind) {
-    return res.status(404).json({ mensagem: "Produto com Id não encontrado" });
-  }
+    const produtoCompleto = {
+      produto: {
+        ...produtoFind,
+      },
+      estado,
+      calculoDeFrete,
+    };
 
-  if (!cep) {
-    return res.status(404).json({ mensagem: "O cep precisa ser informado" });
-  }
-  const estado = await getStateFromZipcode(cep);
-  let percentual = 12 / 100;
-  if (
-    estado === "BA" ||
-    estado === "SE" ||
-    estado === "AL" ||
-    estado === "PE" ||
-    estado === "PB"
-  ) {
-    percentual = 10 / 100;
-  }
-  if (estado === "SP" || estado === "RJ") {
-    percentual = 15 / 100;
-  }
-  const calculoDeFrete = produtoFind.valor * percentual;
+    res.json(produtoCompleto);
+  } catch (error) {
+    if (!produtoFind) {
+      return res
+        .status(404)
+        .json({ mensagem: "Produto com Id não encontrado" });
+    }
 
-  const produtoCompleto = {
-    produto: {
-      ...produtoFind,
-    },
-    estado,
-    calculoDeFrete,
-  };
-
-  res.json(produtoCompleto);
+    if (!cep) {
+      return res.status(404).json({ mensagem: "O cep precisa ser informado" });
+    }
+  }
 };
 
 module.exports = {
