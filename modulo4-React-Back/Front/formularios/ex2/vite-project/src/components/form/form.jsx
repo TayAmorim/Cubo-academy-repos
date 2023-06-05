@@ -22,7 +22,6 @@ function Form({ setRegistration }) {
 
   function handleChangeForm(event) {
     event.preventDefault();
-
     setMensageErro("");
     const keysForm = Object.keys(form);
     const inputsInvalid = keysForm.filter((key) => {
