@@ -1,0 +1,8 @@
+{
+  "vendas": [
+    {
+      "produto": { "id": 1, "nome": "TV Samsung 4K", "valor": 129900 },
+      "quantidade": 5
+    }
+  ]
+}
