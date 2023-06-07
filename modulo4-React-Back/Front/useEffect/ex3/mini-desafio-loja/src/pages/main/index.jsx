@@ -1,7 +1,13 @@
 import "./style.css";
 
-function App() {
-  return <></>;
+function Main() {
+  return (
+    <>
+      <header>
+        <h1>MODA MASCULINA</h1>
+      </header>
+    </>
+  );
 }
 
-export default App;
+export default Main;
