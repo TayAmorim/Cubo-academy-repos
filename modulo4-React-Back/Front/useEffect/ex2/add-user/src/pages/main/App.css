@@ -4,10 +4,11 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .wrapper-main {
+  position: relative;
   margin-top: 20px;
   padding-inline: 5.625rem;
   display: flex;
@@ -64,4 +65,15 @@ body {
   border: 1px solid lightgray;
   font-weight: bold;
   font-size: 1.375rem;
+}
+.message {
+  position: absolute;
+  top: 96%;
+  left: 50%;
+  margin-bottom: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #008000;
+  padding: 20px 40px;
+  border-radius: 4px;
+  color: white;
 }
