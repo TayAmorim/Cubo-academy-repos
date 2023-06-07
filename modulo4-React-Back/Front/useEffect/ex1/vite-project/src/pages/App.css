@@ -1,0 +1,13 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.btn {
+  padding: 20px;
+  background-color: lightgreen;
+  border: none;
+  color: black;
+  border-radius: 4px;
+}
