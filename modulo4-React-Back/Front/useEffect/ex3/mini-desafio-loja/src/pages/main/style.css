@@ -1,5 +1,32 @@
+.wrapper-header {
+  width: 100%;
+  height: 30.688rem;
+  background-image: url("../../assets/banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  padding-left: 2.063rem;
+}
+
+.header-text {
+  text-align: center;
+  color: white;
+  padding-top: 8.25rem;
+}
+
+.header-text h1 {
+  font-size: 5.5rem;
+  margin-bottom: 1.438rem;
+}
+
+.img-logo {
+  width: 10.375rem;
+  padding-top: 7.5rem;
+}
+
 .wrapper-main {
   display: flex;
-  gap: 84px;
+  gap: 5.25rem;
   flex-wrap: wrap;
 }
