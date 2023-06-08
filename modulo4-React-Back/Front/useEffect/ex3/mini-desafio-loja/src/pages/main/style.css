@@ -29,4 +29,7 @@
   display: flex;
   gap: 5.25rem;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  margin-top: 5rem;
 }

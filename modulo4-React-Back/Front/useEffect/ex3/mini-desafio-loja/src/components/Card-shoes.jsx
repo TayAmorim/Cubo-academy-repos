@@ -9,8 +9,12 @@ const CardShoes = ({ image, name, oldPrice, currentPrice }) => {
       </div>
       <p>{name}</p>
       <div className="wrapper-preco">
-        <p>{oldPrice}</p>
-        <p>{currentPrice}</p>
+        <p className="oldPrice">R$ {oldPrice}</p>
+        <p className="currentPrice">R$ {currentPrice}</p>
+      </div>
+      <div className="installment-mode">
+        <p className="installment">6x R$ 38,31</p>
+        <p className="fees">Sem juros</p>
       </div>
     </div>
   );
