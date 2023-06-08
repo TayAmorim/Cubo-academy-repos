@@ -31,5 +31,45 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  margin-top: 5rem;
+  margin-block: 5rem;
+}
+
+footer {
+  background-color: #c4c4c4;
+  width: 100%;
+  padding-block: 6.188rem;
+  padding-inline: 7.25rem;
+  position: relative;
+}
+
+.wrapper-footer {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  color: #474545;
+}
+
+.title-address {
+  margin-bottom: 1.25rem;
+}
+
+.text-address {
+  padding-bottom: 2rem;
+}
+
+.social-address {
+  display: flex;
+  gap: 1rem;
+}
+
+.line {
+  position: absolute;
+  width: 1px;
+  height: 340px;
+  background-color: black;
+  top: 50%;
+  left: 50%;
+  margin-right: 50%;
+  transform: translate(-50%, -50%);
 }
