@@ -1,6 +1,13 @@
 .wrapper-card-shoes {
   width: 20.125rem;
+  cursor: pointer;
+  scale: 1;
+  transform: all 0.6s;
 }
+.wrapper-card-shoes:hover {
+  scale: 0.96;
+}
+
 .wrapper-card-shoes img {
   width: 100%;
 }

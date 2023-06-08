@@ -4,10 +4,13 @@ import SHOES from "../../data";
 import CardShoes from "../../components/Card-shoes";
 import FacebookIcon from "../../assets/facebook.svg";
 import InstagramIcon from "../../assets/instagram.svg";
+import Modal from "../../components/Modal";
+import { useState } from "react";
 
 function Main() {
+  const [showModal, SetShowModal] = useState(true);
   return (
-    <>
+    <div className="wrapper-body">
       <header className="wrapper-header">
         <div className="header-text">
           <h1>MODA MASCULINA</h1>
@@ -40,7 +43,8 @@ function Main() {
           </div>
         </div>
       </footer>
-    </>
+      {showModal && <Modal SetShowModal={SetShowModal} />}
+    </div>
   );
 }
 
