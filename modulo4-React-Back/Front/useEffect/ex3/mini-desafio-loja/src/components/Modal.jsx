@@ -1,31 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./modal.css";
 
-function Modal() {
+function Modal({ shoeClicked }) {
+  const [valueInstallments, setValueInstallments] = useState();
+  useEffect(() => {
+    setValueInstallments((shoeClicked.currentPrice / 6).toFixed(2));
+  }, []);
   return (
     <section className="modal">
       <div className="wrapper-modal">
         <div>
-          <img src="" alt="img sapato" />
+          <img src={shoeClicked.image} alt="img sapato" />
         </div>
-        <h2 className="name-shoes">Nome do sapato</h2>
-        <p className="description-shoes">
-          Sofisticado e cheio de elegância, este sapato estilo Derby deixará o
-          seu look impecável. Feito de couro, conta com design moderno, solado
-          flexível e palmilha extra macia. Com muito bom gosto e charme, é o
-          tipo de sapato masculino que se adapta a qualquer ocasião, desde as
-          formais as mais casuais. Fica incrível se combinado com camisa social
-          manga longa e calça de linho.{" "}
-        </p>
+        <h2 className="name-shoes">{shoeClicked.name}</h2>
+        <p className="description-shoes">{shoeClicked.description}</p>
         <div className="wrapper-purchase">
           <button className="btn-buy">COMPRAR</button>
           <div className="product-value">
             <div className="value">
-              <p className="oldPrice">R$ 329,90</p>
-              <p className="currentPrice">R$ 229,90</p>
+              <p className="oldPrice">R$ {shoeClicked.oldPrice}</p>
+              <p className="currentPrice">R$ {shoeClicked.currentPrice}</p>
             </div>
             <div className="installments">
-              <p className="installment">6x R$ 38,31</p>
+              <p className="installment">6x R$ {valueInstallments}</p>
               <p className="fees">Sem juros</p>
             </div>
           </div>

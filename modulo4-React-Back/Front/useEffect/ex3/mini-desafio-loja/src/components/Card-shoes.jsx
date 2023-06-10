@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./shoes.css";
 
-const CardShoes = ({ image, name, oldPrice, currentPrice }) => {
+const CardShoes = ({ image, name, oldPrice, currentPrice, onClick }) => {
   const [valueInstallments, setValueInstallments] = useState();
   useEffect(() => {
     setValueInstallments((currentPrice / 6).toFixed(2));
   }, []);
 
   return (
-    <div className="wrapper-card-shoes">
+    <div className="wrapper-card-shoes" onClick={onClick}>
       <div className="img-wrapper">
         <img src={image} alt={name} />
       </div>

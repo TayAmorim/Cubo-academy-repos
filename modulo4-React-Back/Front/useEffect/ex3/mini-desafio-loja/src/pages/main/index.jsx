@@ -8,7 +8,13 @@ import Modal from "../../components/Modal";
 import { useState } from "react";
 
 function Main() {
-  const [showModal, SetShowModal] = useState(true);
+  const [showModal, SetShowModal] = useState(false);
+  const [shoeClicked, setShoeClicked] = useState({});
+
+  function handleClickShoe(shoe) {
+    setShoeClicked(shoe);
+    SetShowModal(true);
+  }
   return (
     <div className="wrapper-body">
       <header className="wrapper-header">
@@ -20,7 +26,11 @@ function Main() {
       </header>
       <main className="wrapper-main">
         {SHOES.map((shoe) => (
-          <CardShoes {...shoe} key={shoe.id} />
+          <CardShoes
+            onClick={() => handleClickShoe(shoe)}
+            {...shoe}
+            key={shoe.id}
+          />
         ))}
       </main>
       <footer>
@@ -43,7 +53,9 @@ function Main() {
           </div>
         </div>
       </footer>
-      {showModal && <Modal SetShowModal={SetShowModal} />}
+      {showModal && (
+        <Modal SetShowModal={SetShowModal} shoeClicked={shoeClicked} />
+      )}
     </div>
   );
 }

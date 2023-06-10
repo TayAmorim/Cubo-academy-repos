@@ -17,12 +17,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5rem 4rem;
+  padding: 3rem 4rem;
   border-radius: 0.5rem;
 }
 
+.wrapper-modal img {
+  width: 500px;
+  height: auto;
+}
+
 .name-shoes {
-  margin-block: 3rem;
+  margin-block: 2rem;
 }
 
 .description-shoes {
