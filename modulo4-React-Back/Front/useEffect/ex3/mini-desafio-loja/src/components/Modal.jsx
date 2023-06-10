@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, showModal } from "react";
+import IconClosedModal from "../assets/close-icon.svg";
 import "./modal.css";
 
-function Modal({ shoeClicked }) {
+function Modal({ shoeClicked, SetShowModal }) {
   const [valueInstallments, setValueInstallments] = useState();
   useEffect(() => {
     setValueInstallments((shoeClicked.currentPrice / 6).toFixed(2));
   }, []);
+
+  function handleClosedModal() {
+    SetShowModal(false);
+  }
   return (
     <section className="modal">
       <div className="wrapper-modal">
-        <div>
+        <img
+          onClick={handleClosedModal}
+          className="icon-closed"
+          src={IconClosedModal}
+          alt="Incone de Fechar Modal"
+        />
+
+        <div className="img-shoe">
           <img src={shoeClicked.image} alt="img sapato" />
         </div>
         <h2 className="name-shoes">{shoeClicked.name}</h2>

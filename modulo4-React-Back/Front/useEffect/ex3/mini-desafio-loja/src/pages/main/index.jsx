@@ -13,7 +13,7 @@ function Main() {
 
   function handleClickShoe(shoe) {
     setShoeClicked(shoe);
-    SetShowModal(true);
+    SetShowModal(!showModal);
   }
   return (
     <div className="wrapper-body">
