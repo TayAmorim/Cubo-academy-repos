@@ -17,6 +17,53 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5.625rem;
+  padding: 5rem 4rem;
   border-radius: 0.5rem;
+}
+
+.name-shoes {
+  margin-block: 48px;
+}
+
+.description-shoes {
+  font-size: 14px;
+  margin-bottom: 64px;
+  line-height: 16px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.wrapper-purchase {
+  display: flex;
+  justify-content: space-between;
+  align-self: start;
+  gap: 24px;
+}
+
+.value {
+  margin-bottom: 0.813rem;
+}
+
+.btn-buy {
+  background-color: #52bb50;
+  border: none;
+  width: 350px;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  padding-block: 1rem;
+}
+
+.value,
+.installments {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.value .oldPrice {
+  font-size: 22px;
+}
+
+.value .currentPrice {
+  font-size: 2rem;
 }
