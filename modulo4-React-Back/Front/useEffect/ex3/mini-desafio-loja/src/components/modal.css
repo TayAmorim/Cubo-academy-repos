@@ -22,13 +22,12 @@
 }
 
 .name-shoes {
-  margin-block: 48px;
+  margin-block: 3rem;
 }
 
 .description-shoes {
-  font-size: 14px;
-  margin-bottom: 64px;
-  line-height: 16px;
+  font-size: 0.875rem;
+  margin-bottom: 4rem;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -46,10 +45,10 @@
 .btn-buy {
   background-color: #52bb50;
   border: none;
-  width: 350px;
+  width: 21.875rem;
   color: white;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 1.375rem;
   padding-block: 1rem;
 }
 
@@ -61,7 +60,7 @@
 }
 
 .value .oldPrice {
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 
 .value .currentPrice {
