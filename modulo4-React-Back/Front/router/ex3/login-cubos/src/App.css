@@ -4,8 +4,13 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+
 .App {
-  background: hsla(240, 8%, 20%, 1);
+  background: #2e2e36;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
