@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login";
-import Teachers from "./Pages/teachers";
+import Teachers from "./Pages/Teachers";
 
 function App() {
   return (
