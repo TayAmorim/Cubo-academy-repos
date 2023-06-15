@@ -11,7 +11,7 @@ function Teachers() {
 
   function handleClickCardTeacher(user) {
     setCardClickUser(user);
-    navigate(`/teachers-detail/${user.id}`);
+    navigate(`/teacher-detail/${user.id}`);
   }
 
   return (

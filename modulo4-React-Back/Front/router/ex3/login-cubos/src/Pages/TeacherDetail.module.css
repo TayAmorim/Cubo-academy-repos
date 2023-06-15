@@ -1,0 +1,67 @@
+.wrapperDeatailTeacher {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 42px 0 0 48px;
+  position: relative;
+}
+
+.logo {
+  margin: 0 auto;
+}
+
+.arrowLeft {
+  position: absolute;
+  cursor: pointer;
+}
+
+.cardTeacher {
+  background: #da0175;
+  max-width: 29.188rem;
+  border-radius: 1rem;
+  margin: auto;
+  padding: 20px 40px;
+}
+
+.user {
+  max-width: 11.125rem;
+  border-radius: 50%;
+}
+
+.teacherInfo {
+  text-align: center;
+}
+
+.name {
+  margin: 24px 0 12px 0;
+}
+
+.tituloBio {
+  text-align: center;
+  font-size: 1.375rem;
+  font-weight: 300;
+  text-decoration: underline;
+  margin-bottom: 30px;
+}
+
+.bio:before {
+  content: "";
+  width: 21rem;
+  height: 1px;
+  background: #bbbbbb;
+  display: block;
+  margin: 24px auto;
+}
+
+.bioInfo {
+  text-align: justify;
+  font-size: 0.875rem;
+}
