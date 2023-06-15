@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
+
 import styles from "./CardTeacher.module.css";
 
-function CardTeacher({ name, avatar }) {
+function CardTeacher({ click, name, avatar }) {
   return (
-    <div className={styles.wrapperCard}>
+    <div className={styles.wrapperCard} onClick={click}>
       <div>
         <img
           className={styles.img}

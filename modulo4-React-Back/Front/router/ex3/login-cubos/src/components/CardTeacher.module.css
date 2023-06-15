@@ -9,6 +9,13 @@
   background: #da0175;
   border-radius: 8px;
   padding: 24px 35px;
+  cursor: pointer;
+  scale: 1;
+  transform: all 0.3s;
+}
+
+.wrapperCard:hover {
+  scale: 0.97;
 }
 
 .nome {
