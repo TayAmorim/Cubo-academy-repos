@@ -15,3 +15,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+App img {
+  max-width: 100%;
+}

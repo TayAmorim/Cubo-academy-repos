@@ -11,7 +11,7 @@ function Teachers() {
       </div>
       <div className={styles.teachers}>
         {TeachersData.map((user) => (
-          <CardTeacher key={user.id} {...user} />
+          <CardTeacher  key={user.id} {...user} />
         ))}
       </div>
     </section>

@@ -1,0 +1,17 @@
+.img {
+  max-width: 8.75rem;
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+.wrapperCard {
+  max-width: 200px;
+  background: #da0175;
+  border-radius: 8px;
+  padding: 24px 35px;
+}
+
+.nome {
+  font-size: 22px;
+  margin-top: 1rem;
+}

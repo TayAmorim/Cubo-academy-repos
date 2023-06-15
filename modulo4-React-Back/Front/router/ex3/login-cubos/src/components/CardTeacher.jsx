@@ -5,8 +5,12 @@ function CardTeacher({ name, avatar }) {
   return (
     <div className={styles.wrapperCard}>
       <div>
-        <img src={avatar} alt={`Foto do professor ${name}`} />
-        <h1>{name}</h1>
+        <img
+          className={styles.img}
+          src={avatar}
+          alt={`Foto do professor ${name}`}
+        />
+        <h1 className={styles.nome}>{name}</h1>
       </div>
     </div>
   );
