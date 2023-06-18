@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  width: 200px;
+  padding: 10px 0 10px 8px;
+}
+
+.button {
+  background-color: lightgray;
+}

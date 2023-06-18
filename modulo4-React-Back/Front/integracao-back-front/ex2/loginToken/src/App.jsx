@@ -7,7 +7,9 @@ import { getItem } from "./utils/storage";
 
 function App() {
   function ProtectedRoutes({ redirectTo }) {
+    console.log("render");
     const isAuthenticated = getItem("token");
+    console.log(isAuthenticated);
     return isAuthenticated ? <Outlet /> : <Navigate to={redirectTo} />;
   }
   return (
