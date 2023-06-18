@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "nome": "Tayanna",
+      "email": "amorim.tayanna@gmail.com",
+      "id": 1
+    },
+    {
+      "nome": "adson",
+      "email": "adson.ventura@gmail.com",
+      "id": 2
+    },
+    {
+      "nome": "Maria jose",
+      "email": "maia@kjfksd.hmasjk",
+      "id": 3
+    }
+  ]
+}
