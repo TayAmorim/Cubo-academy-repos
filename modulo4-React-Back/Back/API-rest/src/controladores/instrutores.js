@@ -33,7 +33,7 @@ const cadastrarInstrutor = (req, res) => {
     status: status ?? true,
   };
   instrutores.push(instrutor);
-  return res.status(201).json(instrutor);
+  return res.status(201).json(contas);
 };
 
 const atualizarInstrutor = (req, res) => {

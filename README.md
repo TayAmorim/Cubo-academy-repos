@@ -12,6 +12,7 @@ Repositório onde será postado as atividades desenvolvidas durante o curso de d
 - [Modulo 2](./Modulo2-HTML-CSS/)
 - [Modulo 3](./Modulo3-Dom/)
 - [Modulo 4](./modulo4-React-Back/)
+- [Modulo 5](./Modulo5-ReactII-BancoDeDados/)
 
 ## 🦸 Autora
 
