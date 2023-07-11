@@ -36,6 +36,7 @@ function useChange() {
 
     setUsersData(localUsersData);
     setUserInEditing(false);
+    setClearForm(true);
   }
   function handleDeleteUser(userId) {
     const localUsersData = [...usersData];
