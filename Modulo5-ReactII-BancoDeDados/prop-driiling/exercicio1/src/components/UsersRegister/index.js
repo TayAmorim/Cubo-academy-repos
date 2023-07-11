@@ -1,80 +1,65 @@
-import { useEffect, useState } from 'react';
-import './styles.css';
+import { useContext } from "react";
+import "./styles.css";
+import { UserContext } from "../../Context/userContext";
+import useForm from "../../Hooks/useForm";
 
-function UsersRegister({
-  userInEditing,
-  setUserInEditing,
-  usersData,
-  setUsersData
-}) {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-
-  useEffect(() => {
-    if (userInEditing) {
-      setName(userInEditing.name);
-      setAge(userInEditing.age);
-      return;
-    }
-
-    setName('');
-    setAge('');
-  }, [userInEditing]);
+function UsersRegister() {
+  const { usersData, setUsersData, userInEditing, setUserInEditing } =
+    useContext(UserContext);
+  const userName = useForm();
+  const userAge = useForm();
 
   async function handleRegisterUser() {
-
-    if (!name || !age) {
+    if (!userName.value || !userAge.value) {
       return;
     }
 
-    const lastItem = usersData.length ? usersData[usersData.length - 1].id + 1 : 1;
+    const lastItem = usersData.length
+      ? usersData[usersData.length - 1].id + 1
+      : 1;
 
-    setUsersData([...usersData, { id: lastItem, name: name, age: age }]);
+    setUsersData([
+      ...usersData,
+      { id: lastItem, name: userName.value, age: userAge.value },
+    ]);
 
-    setName('');
-    setAge('');
+    userName.setValue("");
+    userAge.setValue("");
   }
 
   async function handleEditUser() {
-
-    if (!name || !age) {
+    if (!userName.value || !userAge.value) {
       return;
     }
     const localUsersData = [...usersData];
 
-    const currentUser = localUsersData.find(item => item.id === userInEditing.id);
+    const currentUser = localUsersData.find(
+      (item) => item.id === userInEditing.id
+    );
 
-    currentUser.name = name;
-    currentUser.age = age;
+    console.log(currentUser);
+    currentUser.name = userName.value;
+    currentUser.age = userAge.value;
 
     setUsersData(localUsersData);
-
     setUserInEditing(false);
   }
 
   return (
     <div className="left">
-      <h1>{userInEditing ? 'Editando' : 'Adicionar'} usuário</h1>
-      <input
-        type="text"
-        placeholder="Name"
-        onChange={(e) => setName(e.target.value)}
-        value={name}
-      />
-      <input
-        type="number"
-        placeholder="Age"
-        onChange={(e) => setAge(e.target.valueAsNumber)}
-        value={age}
-      />
-      <button onClick={() =>
-        userInEditing
-          ? handleEditUser()
-          : handleRegisterUser()}
+      <h1>{userInEditing ? "Editando" : "Adicionar"} usuário</h1>
+      <input type="text" placeholder="Name" {...userName} />
+      <input type="number" placeholder="Age" {...userAge} />
+      <button
+        onClick={() =>
+          userInEditing ? handleEditUser() : handleRegisterUser()
+        }
       >
-        {userInEditing ? 'Editar' : 'Adicionar'}
+        {userInEditing ? "Editar" : "Adicionar"}
       </button>
-      {userInEditing && <button onClick={() => setUserInEditing(false)}>Cancelar</button>}
+      {userInEditing && (
+        <button onClick={() => setUserInEditing(false)}>Cancelar</button>
+      )}
     </div>
   );
 }

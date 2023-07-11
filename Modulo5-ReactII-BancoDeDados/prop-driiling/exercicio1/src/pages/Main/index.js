@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
-import UsersList from '../../components/UsersList';
-import UsersRegister from '../../components/UsersRegister';
-import './styles.css';
+import { useContext } from "react";
+import UsersList from "../../components/UsersList";
+import UsersRegister from "../../components/UsersRegister";
+import "./styles.css";
+import { UserContext } from "../../Context/userContext";
 
 export default function Main() {
-  const [usersData, setUsersData] = useState([]);
-  const [userInEditing, setUserInEditing] = useState(false);
+  const { usersData, setUsersData } = useContext(UserContext);
 
   function handleDeleteUser(userId) {
     const localUsersData = [...usersData];
 
-    const index = localUsersData.findIndex(item => item.id === userId);
+    const index = localUsersData.findIndex((item) => item.id === userId);
 
     localUsersData.splice(index, 1);
 
@@ -19,22 +19,8 @@ export default function Main() {
 
   return (
     <div className="container-main">
-
-      <UsersRegister
-        usersData={usersData}
-        setUsersData={setUsersData}
-        setUserInEditing={setUserInEditing}
-        userInEditing={userInEditing}
-      />
-
-      <UsersList
-        usersData={usersData}
-        setUsersData={setUsersData}
-        setUserInEditing={setUserInEditing}
-        userInEditing={userInEditing}
-        handleDeleteUser={handleDeleteUser}
-      />
-
+      <UsersRegister />
+      <UsersList handleDeleteUser={handleDeleteUser} />
     </div>
   );
 }
