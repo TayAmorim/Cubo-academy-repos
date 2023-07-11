@@ -5,6 +5,7 @@ export const UserContext = createContext();
 export const UserStorage = ({ children }) => {
   const [usersData, setUsersData] = useState([]);
   const [userInEditing, setUserInEditing] = useState(false);
+  const [clearForm, setClearForm] = useState(false);
 
   return (
     <UserContext.Provider
@@ -13,6 +14,8 @@ export const UserStorage = ({ children }) => {
         setUsersData,
         userInEditing,
         setUserInEditing,
+        clearForm,
+        setClearForm,
       }}
     >
       {children}

@@ -1,16 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../Context/userContext";
 
-function useForm() {
+function useForm(type) {
   const [value, setValue] = useState("");
-  const { userInEditing } = useContext(UserContext);
+  const { clearForm, userInEditing, setClearForm } = useContext(UserContext);
 
   useEffect(() => {
-    if (userInEditing) {
-      return;
+    if (clearForm) {
+      setValue("");
+      setClearForm(false);
     }
-    setValue("");
-  }, [userInEditing]);
+    if (userInEditing) {
+      if (type === "name") {
+        setValue(userInEditing.name);
+      }
+      if (type === "age") {
+        setValue(userInEditing.age);
+      }
+    }
+  }, [clearForm, userInEditing, type, setClearForm]);
 
   function onChange({ target }) {
     setValue(target.value);
@@ -18,7 +26,6 @@ function useForm() {
 
   return {
     value,
-    setValue,
     onChange,
   };
 }

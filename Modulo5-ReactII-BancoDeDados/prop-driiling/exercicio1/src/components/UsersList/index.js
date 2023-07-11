@@ -4,9 +4,13 @@ import Empty from "../Empty";
 import UsersReport from "../UsersReport";
 import "./styles.css";
 import { UserContext } from "../../Context/userContext";
+import useChange from "../../Hooks/useChange";
 
-function UsersList({ handleDeleteUser }) {
+function UsersList() {
   const { usersData, setUserInEditing } = useContext(UserContext);
+
+  const { handleDeleteUser } = useChange();
+
   return (
     <div className="right">
       {usersData.length > 0 && (
@@ -32,7 +36,7 @@ function UsersList({ handleDeleteUser }) {
           iconSize="50"
         />
       )}
-      <UsersReport usersData={usersData} />
+      <UsersReport />
     </div>
   );
 }

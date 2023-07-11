@@ -2,48 +2,13 @@ import { useContext } from "react";
 import "./styles.css";
 import { UserContext } from "../../Context/userContext";
 import useForm from "../../Hooks/useForm";
+import useChange from "../../Hooks/useChange";
 
 function UsersRegister() {
-  const { usersData, setUsersData, userInEditing, setUserInEditing } =
-    useContext(UserContext);
-  const userName = useForm();
-  const userAge = useForm();
-
-  async function handleRegisterUser() {
-    if (!userName.value || !userAge.value) {
-      return;
-    }
-
-    const lastItem = usersData.length
-      ? usersData[usersData.length - 1].id + 1
-      : 1;
-
-    setUsersData([
-      ...usersData,
-      { id: lastItem, name: userName.value, age: userAge.value },
-    ]);
-
-    userName.setValue("");
-    userAge.setValue("");
-  }
-
-  async function handleEditUser() {
-    if (!userName.value || !userAge.value) {
-      return;
-    }
-    const localUsersData = [...usersData];
-
-    const currentUser = localUsersData.find(
-      (item) => item.id === userInEditing.id
-    );
-
-    console.log(currentUser);
-    currentUser.name = userName.value;
-    currentUser.age = userAge.value;
-
-    setUsersData(localUsersData);
-    setUserInEditing(false);
-  }
+  const { userInEditing, setUserInEditing } = useContext(UserContext);
+  const userName = useForm("name");
+  const userAge = useForm("age");
+  const { handleRegisterUser, handleEditUser } = useChange();
 
   return (
     <div className="left">
@@ -52,7 +17,9 @@ function UsersRegister() {
       <input type="number" placeholder="Age" {...userAge} />
       <button
         onClick={() =>
-          userInEditing ? handleEditUser() : handleRegisterUser()
+          userInEditing
+            ? handleEditUser(userName.value, userAge.value)
+            : handleRegisterUser(userName.value, userAge.value)
         }
       >
         {userInEditing ? "Editar" : "Adicionar"}
