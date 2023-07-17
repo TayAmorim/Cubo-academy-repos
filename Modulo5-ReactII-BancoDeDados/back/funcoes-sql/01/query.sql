@@ -50,3 +50,6 @@ select categoria, count(id) from farmacia Where categoria is not null group by c
 
 15 - Faça uma query que retorna a idade e a quantidade de registros de cada idade, onde a idade seja maior ou igual a 18 anos, na tabela `usuarios`.
 select idade, count(id) from usuarios where idade >= 18 group by idade
+
+16 - Faça uma query que retorna as três categorias e a soma do estoque de todos os medicamentos de cada categoria, na tabela `farmacia`.
+select categoria, sum(estoque) from farmacia  group by categoria
