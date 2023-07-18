@@ -1,8 +1,13 @@
+/* eslint-disable react/prop-types */
 import Button from "@mui/material/Button";
 
-function ButtonAdd() {
+function ButtonAdd({ handleOnClick }) {
   return (
-    <Button variant="contained" sx={{ paddingBlock: "10px" }}>
+    <Button
+      onClick={handleOnClick}
+      variant="contained"
+      sx={{ paddingBlock: "10px" }}
+    >
       ADICIONAR PRODUTO
     </Button>
   );
