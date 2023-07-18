@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
-import AdicionarProdutos from "./pages/adicionarProdutos";
+import AddProducts from "./pages/addProducts";
 import Header from "./components/Header";
 import "./styles/global.css";
 
@@ -10,7 +10,7 @@ function MainRoutes() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="adicionar" element={<AdicionarProdutos />} />
+        <Route path="adicionar" element={<AddProducts />} />
       </Routes>
     </>
   );

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Typography from "@mui/material/Typography";
-
 import UseTheme from "../hooks/useTheme";
 import { ThemeProvider } from "@mui/material/styles";
 import { Box, Grid } from "@mui/material";
