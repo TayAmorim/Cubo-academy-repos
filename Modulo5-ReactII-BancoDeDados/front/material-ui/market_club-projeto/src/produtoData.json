@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Jaleco",
+    "description": "Jaleco de alta qualidade fabricado para atender aos clientes mais exigentes",
+    "price": "R$ 999,99",
+    "quantified": 3
+  },
+  {
+    "id": 2,
+    "name": "Avental",
+    "description": "Jaleco de alta qualidade fabricado para atender aos clientes mais exigentes",
+    "price": "R$ 999,99",
+    "quantified": 5
+  },
+  {
+    "id": 3,
+    "name": "Touca",
+    "description": "Jaleco de alta qualidade fabricado para atender aos clientes mais exigentes",
+    "price": "R$ 999,99",
+    "quantified": 7
+  },
+  {
+    "id": 4,
+    "name": "Fronha",
+    "description": "Jaleco de alta qualidade fabricado para atender aos clientes mais exigentes",
+    "price": "R$ 999,99",
+    "quantified": 9
+  },
+  {
+    "id": 5,
+    "name": "Embalagem",
+    "description": "Jaleco de alta qualidade fabricado para atender aos clientes mais exigentes",
+    "price": "R$ 999,99",
+    "quantified": 9
+  }
+]
