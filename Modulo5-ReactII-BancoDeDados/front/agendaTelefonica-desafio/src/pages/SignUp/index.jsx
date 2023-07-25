@@ -10,24 +10,6 @@ function SignUp() {
 
   function handleClickSubmit(event) {
     event.preventDefault();
-    fetch("https://api-contacts.pedagogico.cubos.academy/usuarios", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nome: "Danile Lopes",
-        email: "daniel456.lopes@cubos.academy",
-        senha: "123456",
-      }),
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-      });
   }
 
   return (
