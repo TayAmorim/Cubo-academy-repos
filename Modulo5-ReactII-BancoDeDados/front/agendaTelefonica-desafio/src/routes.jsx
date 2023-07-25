@@ -5,7 +5,7 @@ import Home from "./pages/home";
 import "./styles.css";
 import { ThemeProvider } from "@emotion/react";
 import useTheme from "./Hooks/useTheme";
-import { UserStorage } from "./UserContext";
+import { UserStorage } from "./Context/UserContext";
 
 function MainRoutes() {
   const theme = useTheme();

@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import ImgRight from "../../assets/img-right.png";
 import ButtonRed from "../../Components/ButtonRed";
 import { useContext } from "react";
-import { UserContext } from "../../UserContext";
 import useForm from "../../Hooks/useForm";
 import useValidate from "../../Hooks/useValidate";
 import Error from "../../Helper/Error";
+import { UserContext } from "../../Context/UserContext";
 
 function SignUp() {
   const userNome = useForm();
@@ -78,7 +78,7 @@ function SignUp() {
           <ButtonGroup
             sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
-            <ButtonGreen type="submit">LOGIN</ButtonGreen>
+            <ButtonGreen type="submit">CADASTRAR</ButtonGreen>
             <ButtonRed type="reset">CANCELAR</ButtonRed>
           </ButtonGroup>
         </Stack>
