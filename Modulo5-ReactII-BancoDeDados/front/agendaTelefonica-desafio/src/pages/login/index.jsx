@@ -15,9 +15,9 @@ function Login() {
   const { userLogin } = useContext(UserContext);
   const validateEmail = useValidate("email", userEmail.value);
   const validatePassword = useValidate("senha", userSenha.value);
+
   async function handleClickSubmit(event) {
     event.preventDefault();
-
     if (validateEmail.validate() && validatePassword.validate()) {
       userLogin(userEmail.value, userSenha.value);
     }
@@ -48,14 +48,14 @@ function Login() {
         >
           <CssTextField
             error={validateEmail.error ? true : false}
-            id="name"
-            placeholder="Nome"
+            id="email"
+            placeholder="Email"
             helperText={validateEmail.error ? validateEmail.error : ""}
             {...userEmail}
           />
           <CssTextField
             error={validatePassword.error ? true : false}
-            id="email"
+            id="password"
             type="password"
             placeholder="Senha"
             helperText={validatePassword.error ? validatePassword.error : ""}

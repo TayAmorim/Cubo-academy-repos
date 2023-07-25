@@ -4,12 +4,31 @@ import { CssTextField } from "../../Components/StyleComponents";
 import { useNavigate } from "react-router-dom";
 import ImgRight from "../../assets/img-right.png";
 import ButtonRed from "../../Components/ButtonRed";
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
+import useForm from "../../Hooks/useForm";
+import useValidate from "../../Hooks/useValidate";
+import Error from "../../Helper/Error";
 
 function SignUp() {
+  const userNome = useForm();
+  const userEmail = useForm();
+  const userSenha = useForm();
   const navigate = useNavigate();
+  const { registerUser, error } = useContext(UserContext);
+  const validateEmail = useValidate("email", userEmail.value);
+  const validatePassword = useValidate("senha", userSenha.value);
+  const validateNome = useValidate("nome", userNome.value);
 
   function handleClickSubmit(event) {
     event.preventDefault();
+    if (
+      validateEmail.validate() &&
+      validateNome.validate() &&
+      validatePassword.validate()
+    ) {
+      registerUser(userNome.value, userEmail.value, userSenha.value);
+    }
   }
 
   return (
@@ -34,9 +53,28 @@ function SignUp() {
           autoComplete="off"
           sx={{ marginTop: "32px" }}
         >
-          <CssTextField id="name" placeholder="Nome" size="medium" />
-          <CssTextField id="email" placeholder="Email" />
-          <CssTextField id="senha" placeholder="Senha" />
+          <CssTextField
+            error={validateNome.error ? true : false}
+            id="name"
+            placeholder="Nome"
+            helperText={validateNome.error ? validateNome.error : ""}
+            {...userNome}
+          />
+          <CssTextField
+            error={validateEmail.error ? true : false}
+            id="email"
+            placeholder="Email"
+            helperText={validateEmail.error ? validateEmail.error : ""}
+            {...userEmail}
+          />
+          <CssTextField
+            error={validatePassword.error ? true : false}
+            id="senha"
+            type="password"
+            placeholder="Senha"
+            helperText={validatePassword.error ? validatePassword.error : ""}
+            {...userSenha}
+          />
           <ButtonGroup
             sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
@@ -44,6 +82,7 @@ function SignUp() {
             <ButtonRed type="reset">CANCELAR</ButtonRed>
           </ButtonGroup>
         </Stack>
+        {error && <Error error={error} />}
         <Typography textAlign="center" variant="body1" marginTop={4}>
           Já tem cadastro?{" "}
           <Link component="button" onClick={() => navigate("/")}>

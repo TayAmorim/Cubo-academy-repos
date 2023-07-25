@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
-import { TOKEN_USER } from "../Api";
+import { TOKEN_USER, USER_POST } from "../Api";
 import { useLocalStorage } from "react-use";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
@@ -9,6 +10,7 @@ export const UserStorage = ({ children }) => {
   const [value, setValue, remove] = useLocalStorage("token");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   async function userLogin(userEmail, password) {
     try {
@@ -21,13 +23,33 @@ export const UserStorage = ({ children }) => {
       const { usuario, token } = await response.json();
       setValue(token);
       setData(usuario);
+      navigate("/");
     } catch (error) {
-      setError(error.message);
+      setError(error);
     }
   }
-  console.log(data);
+
+  async function registerUser(nome, email, senha) {
+    setError(null);
+    try {
+      const { url, options } = USER_POST({
+        nome,
+        email,
+        senha,
+      });
+      const response = await fetch(url, options);
+      const data = await response.json();
+      if (!response.ok) return setError(data);
+      navigate("/");
+    } catch (er) {
+      setError(er);
+    }
+  }
+
   return (
-    <UserContext.Provider value={{ userLogin, data, error, remove, value }}>
+    <UserContext.Provider
+      value={{ userLogin, data, error, remove, value, registerUser }}
+    >
       {children}
     </UserContext.Provider>
   );

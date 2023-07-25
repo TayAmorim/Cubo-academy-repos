@@ -12,3 +12,16 @@ export function TOKEN_USER(body) {
     },
   };
 }
+
+export function USER_POST(body) {
+  return {
+    url: `${API_URL}/usuarios`,
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
