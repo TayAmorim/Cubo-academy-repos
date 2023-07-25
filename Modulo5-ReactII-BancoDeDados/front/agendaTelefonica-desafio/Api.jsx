@@ -25,3 +25,15 @@ export function USER_POST(body) {
     },
   };
 }
+
+export function CONTACT_GET(token) {
+  return {
+    url: `${API_URL}/contatos`,
+    options: {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}

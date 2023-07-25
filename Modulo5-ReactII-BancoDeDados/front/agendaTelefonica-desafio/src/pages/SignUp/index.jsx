@@ -9,6 +9,7 @@ import useForm from "../../Hooks/useForm";
 import useValidate from "../../Hooks/useValidate";
 import Error from "../../Helper/Error";
 import { UserContext } from "../../Context/UserContext";
+import FormContainer from "../../Components/FormContainer";
 
 function SignUp() {
   const userNome = useForm();
@@ -44,15 +45,7 @@ function SignUp() {
         <Typography textAlign="center" variant="h1">
           Cadastre-se
         </Typography>
-        <Stack
-          onSubmit={handleClickSubmit}
-          direction={{ xs: "row", sm: "column" }}
-          spacing={{ xs: 1, sm: 2 }}
-          component="form"
-          noValidate
-          autoComplete="off"
-          sx={{ marginTop: "32px" }}
-        >
+        <FormContainer handleClickSubmit={handleClickSubmit}>
           <CssTextField
             error={validateNome.error ? true : false}
             id="name"
@@ -81,7 +74,7 @@ function SignUp() {
             <ButtonGreen type="submit">CADASTRAR</ButtonGreen>
             <ButtonRed type="reset">CANCELAR</ButtonRed>
           </ButtonGroup>
-        </Stack>
+        </FormContainer>
         {error ? <Error error={error} /> : null}
         <Typography textAlign="center" variant="body1" marginTop={4}>
           Já tem cadastro?{" "}
