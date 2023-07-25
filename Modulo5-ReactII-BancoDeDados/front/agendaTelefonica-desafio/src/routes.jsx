@@ -14,7 +14,7 @@ function MainRoutes() {
       <UserStorage>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/signUp" element={<SignUp />} />
           <Route path="home" element={<Home />} />
         </Routes>
       </UserStorage>

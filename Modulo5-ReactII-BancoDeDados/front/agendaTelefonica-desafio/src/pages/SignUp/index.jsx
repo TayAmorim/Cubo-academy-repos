@@ -82,7 +82,7 @@ function SignUp() {
             <ButtonRed type="reset">CANCELAR</ButtonRed>
           </ButtonGroup>
         </Stack>
-        {error && <Error error={error} />}
+        {error ? <Error error={error} /> : null}
         <Typography textAlign="center" variant="body1" marginTop={4}>
           Já tem cadastro?{" "}
           <Link component="button" onClick={() => navigate("/")}>

@@ -12,7 +12,7 @@ function Login() {
   const userEmail = useForm();
   const userSenha = useForm();
   const navigate = useNavigate();
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, setError } = useContext(UserContext);
   const validateEmail = useValidate("email", userEmail.value);
   const validatePassword = useValidate("senha", userSenha.value);
 
@@ -20,9 +20,13 @@ function Login() {
     event.preventDefault();
     if (validateEmail.validate() && validatePassword.validate()) {
       userLogin(userEmail.value, userSenha.value);
+      navigate("/home");
     }
+  }
 
-    //navigate("/home");
+  function handleClickRegister() {
+    navigate("/signUp");
+    setError(null);
   }
 
   return (
@@ -65,7 +69,7 @@ function Login() {
         </Stack>
         <Typography textAlign="center" variant="body1" marginTop={4}>
           Não tem cadastro?{" "}
-          <Link component="button" onClick={() => navigate("/sign-up")}>
+          <Link component="button" onClick={handleClickRegister}>
             Clique aqui!
           </Link>
         </Typography>

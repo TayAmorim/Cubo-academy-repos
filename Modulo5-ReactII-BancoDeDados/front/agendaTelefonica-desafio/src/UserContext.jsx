@@ -23,14 +23,12 @@ export const UserStorage = ({ children }) => {
       const { usuario, token } = await response.json();
       setValue(token);
       setData(usuario);
-      navigate("/");
     } catch (error) {
       setError(error);
     }
   }
 
   async function registerUser(nome, email, senha) {
-    setError(null);
     try {
       const { url, options } = USER_POST({
         nome,
@@ -39,7 +37,9 @@ export const UserStorage = ({ children }) => {
       });
       const response = await fetch(url, options);
       const data = await response.json();
+
       if (!response.ok) return setError(data);
+
       navigate("/");
     } catch (er) {
       setError(er);
@@ -48,7 +48,7 @@ export const UserStorage = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, data, error, remove, value, registerUser }}
+      value={{ userLogin, data, error, remove, value, registerUser, setError }}
     >
       {children}
     </UserContext.Provider>
