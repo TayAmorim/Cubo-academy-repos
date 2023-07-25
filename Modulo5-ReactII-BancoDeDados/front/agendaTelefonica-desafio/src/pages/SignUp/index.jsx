@@ -7,6 +7,29 @@ import ButtonRed from "../../Components/ButtonRed";
 
 function SignUp() {
   const navigate = useNavigate();
+
+  function handleClickSubmit(event) {
+    event.preventDefault();
+    fetch("https://api-contacts.pedagogico.cubos.academy/usuarios", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: "Danile Lopes",
+        email: "daniel456.lopes@cubos.academy",
+        senha: "123456",
+      }),
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+      });
+  }
+
   return (
     <Stack
       direction={{ xs: "row", sm: "row-reverse" }}
@@ -17,8 +40,11 @@ function SignUp() {
         <img src={ImgRight} alt="mulher com telefone" />
       </Box>
       <Stack sx={{ minWidth: "476px" }}>
-        <Typography variant="h1">Cadastre-se</Typography>
+        <Typography textAlign="center" variant="h1">
+          Cadastre-se
+        </Typography>
         <Stack
+          onSubmit={handleClickSubmit}
           direction={{ xs: "row", sm: "column" }}
           spacing={{ xs: 1, sm: 2 }}
           component="form"
@@ -27,15 +53,12 @@ function SignUp() {
           sx={{ marginTop: "32px" }}
         >
           <CssTextField id="name" placeholder="Nome" size="medium" />
-          <CssTextField
-            sx={{ marginBottom: "40px" }}
-            id="email"
-            placeholder="Email"
-          />
+          <CssTextField id="email" placeholder="Email" />
+          <CssTextField id="senha" placeholder="Senha" />
           <ButtonGroup
             sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
-            <ButtonGreen type={SubmitEvent}>LOGIN</ButtonGreen>
+            <ButtonGreen type="submit">LOGIN</ButtonGreen>
             <ButtonRed type="reset">CANCELAR</ButtonRed>
           </ButtonGroup>
         </Stack>

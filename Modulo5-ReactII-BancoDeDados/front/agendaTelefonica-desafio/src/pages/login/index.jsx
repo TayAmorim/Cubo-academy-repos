@@ -3,13 +3,26 @@ import ImgLeft from "../../assets/img-left.jpg";
 import { CssTextField } from "../../Components/StyleComponents";
 import ButtonGreen from "../../Components/ButtonGreen";
 import { useNavigate } from "react-router-dom";
+import useForm from "../../Hooks/useForm";
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
+import useValidate from "../../Hooks/useValidate";
 
 function Login() {
+  const userEmail = useForm();
+  const userSenha = useForm();
   const navigate = useNavigate();
-
-  function handleClickSubmit(event) {
+  const { userLogin } = useContext(UserContext);
+  const validateEmail = useValidate("email", userEmail.value);
+  const validatePassword = useValidate("senha", userSenha.value);
+  async function handleClickSubmit(event) {
     event.preventDefault();
-    navigate("/home");
+
+    if (validateEmail.validate() && validatePassword.validate()) {
+      userLogin(userEmail.value, userSenha.value);
+    }
+
+    //navigate("/home");
   }
 
   return (
@@ -33,13 +46,22 @@ function Login() {
           autoComplete="off"
           sx={{ marginTop: "32px" }}
         >
-          <CssTextField id="name" placeholder="Nome" size="medium" />
           <CssTextField
-            sx={{ marginBottom: "40px" }}
-            id="email"
-            placeholder="Email"
+            error={validateEmail.error ? true : false}
+            id="name"
+            placeholder="Nome"
+            helperText={validateEmail.error ? validateEmail.error : ""}
+            {...userEmail}
           />
-          <ButtonGreen type={SubmitEvent}>LOGIN</ButtonGreen>
+          <CssTextField
+            error={validatePassword.error ? true : false}
+            id="email"
+            type="password"
+            placeholder="Senha"
+            helperText={validatePassword.error ? validatePassword.error : ""}
+            {...userSenha}
+          />
+          <ButtonGreen type="submit">LOGIN</ButtonGreen>
         </Stack>
         <Typography textAlign="center" variant="body1" marginTop={4}>
           Não tem cadastro?{" "}
