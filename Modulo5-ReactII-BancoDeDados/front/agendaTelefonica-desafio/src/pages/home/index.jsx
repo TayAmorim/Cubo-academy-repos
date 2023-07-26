@@ -86,6 +86,7 @@ function home() {
         </TableContainer>
       </Container>
       <Modal
+        shouldFetchNewData={shouldFetchNewData}
         setShouldFetchNewData={setShouldFetchNewData}
         open={open}
         setOpen={setOpen}

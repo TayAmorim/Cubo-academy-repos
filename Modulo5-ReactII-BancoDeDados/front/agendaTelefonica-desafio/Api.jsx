@@ -51,3 +51,17 @@ export function CONTACT_POST(token, body) {
     },
   };
 }
+
+export function CONTACT_PUT(id, body, token) {
+  return {
+    url: `${API_URL}/contatos/${id}`,
+    options: {
+      method: "PUT",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

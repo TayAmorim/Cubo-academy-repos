@@ -9,7 +9,7 @@ import ButtonGreen from "./ButtonGreen";
 import ButtonRed from "./ButtonRed";
 import useFetch from "../Hooks/useFetch";
 import useForm from "../Hooks/useForm";
-import { CONTACT_POST } from "../../Api";
+import { CONTACT_POST, CONTACT_PUT } from "../../Api";
 import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import useValidate from "../Hooks/useValidate";
@@ -37,10 +37,10 @@ export default function KeepMountedModal({
   const validateEmail = useValidate("email", contactEmail.value);
   const validateName = useValidate("name", contactName.value);
   const validateTel = useValidate("telefone", contactTel.value);
-  const { value, userEdit } = useContext(UserContext);
+  const { value, userEdit, setUserEdit } = useContext(UserContext);
   const handleClose = () => setOpen(false);
 
-  function handleAddContact(event) {
+  async function handleAddContact(event) {
     event.preventDefault();
 
     if (
@@ -54,14 +54,26 @@ export default function KeepMountedModal({
         telefone: contactTel.value,
       };
       const { url, options } = CONTACT_POST(value, newContact);
-      request(url, options);
+      await request(url, options);
       setShouldFetchNewData(true);
+      setOpen(false);
+      setUserEdit(false);
     }
   }
 
-  function handleEditContact(event) {
+  async function handleEditContact(event) {
     event.preventDefault();
-    console.log(userEdit);
+    const idContact = userEdit.id;
+    const contactPut = {
+      nome: contactName.value,
+      email: contactEmail.value,
+      telefone: contactTel.value,
+    };
+    const { url, options } = CONTACT_PUT(idContact, contactPut, value);
+    await request(url, options);
+    setShouldFetchNewData(true);
+    setOpen(false);
+    setUserEdit(false);
   }
 
   return (

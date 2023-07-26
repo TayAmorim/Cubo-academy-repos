@@ -3,13 +3,12 @@ import { UserContext } from "../Context/UserContext";
 
 const useForm = (type) => {
   const [value, setValue] = useState("");
-  const { clearForm, userEdit, setUserEdit, setClearForm } =
-    useContext(UserContext);
+  const { clearForm, userEdit, setUserEdit } = useContext(UserContext);
 
   useEffect(() => {
-    if (clearForm) {
+    if (!userEdit) {
       setValue("");
-      setClearForm(false);
+      return;
     }
     if (userEdit) {
       if (type === "nome") {
@@ -22,7 +21,7 @@ const useForm = (type) => {
         setValue(userEdit.telefone);
       }
     }
-  }, [clearForm, setClearForm, setUserEdit, type, userEdit]);
+  }, [clearForm, setUserEdit, type, userEdit]);
 
   function onChange({ target }) {
     setValue(target.value);
