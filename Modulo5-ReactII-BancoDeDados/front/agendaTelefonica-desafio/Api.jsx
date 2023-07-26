@@ -65,3 +65,16 @@ export function CONTACT_PUT(id, body, token) {
     },
   };
 }
+
+export function CONTACT_DELETE(id, token) {
+  return {
+    url: `${API_URL}/contatos/${id}`,
+    options: {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+    },
+  };
+}

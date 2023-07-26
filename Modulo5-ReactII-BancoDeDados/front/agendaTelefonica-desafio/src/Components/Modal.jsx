@@ -38,11 +38,9 @@ export default function KeepMountedModal({
   const validateName = useValidate("name", contactName.value);
   const validateTel = useValidate("telefone", contactTel.value);
   const { value, userEdit, setUserEdit } = useContext(UserContext);
-  const handleClose = () => setOpen(false);
 
   async function handleAddContact(event) {
     event.preventDefault();
-
     if (
       validateEmail.validate() &&
       validateName.validate() &&
@@ -56,9 +54,13 @@ export default function KeepMountedModal({
       const { url, options } = CONTACT_POST(value, newContact);
       await request(url, options);
       setShouldFetchNewData(true);
-      setOpen(false);
       setUserEdit(false);
     }
+  }
+
+  function handleClose() {
+    setUserEdit(false);
+    setOpen(false);
   }
 
   async function handleEditContact(event) {
@@ -92,7 +94,7 @@ export default function KeepMountedModal({
             component="h2"
             sx={{ textAlign: "center" }}
           >
-            Novo Contato
+            {userEdit ? "Editar Contato" : "Adicionar Contato"}
           </Typography>
           <FormContainer
             handleClickSubmit={userEdit ? handleEditContact : handleAddContact}
@@ -124,7 +126,7 @@ export default function KeepMountedModal({
               sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
               <ButtonGreen type="submit">CADASTRAR</ButtonGreen>
-              <ButtonRed type="reset">CANCELAR</ButtonRed>
+              <ButtonRed onClick={handleClose}>CANCELAR</ButtonRed>
             </ButtonGroup>
           </FormContainer>
         </Box>

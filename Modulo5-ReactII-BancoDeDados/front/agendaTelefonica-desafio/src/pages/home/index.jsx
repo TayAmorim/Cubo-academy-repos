@@ -19,13 +19,15 @@ import { CONTACT_GET } from "../../../Api";
 import Modal from "../../Components/Modal";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import ModalDelete from "../../Components/ModalDelete";
 
 function home() {
   const { data, request } = useFetch();
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const [openModalDelete, setOpenModalDelete] = useState(false);
   const { value, setUserEdit } = useContext(UserContext);
   const [shouldFetchNewData, setShouldFetchNewData] = useState(true);
+  const [contactDelete, setContactDelete] = useState();
 
   useEffect(() => {
     if (!shouldFetchNewData) return;
@@ -34,9 +36,16 @@ function home() {
     setShouldFetchNewData(false);
   }, [value, request, shouldFetchNewData]);
 
+  const handleOpen = () => setOpen(true);
+
   function handleOpenModalContact(contact) {
     setOpen(true);
     setUserEdit(contact);
+  }
+
+  function handleOpenModalDelete(contact) {
+    setOpenModalDelete(true);
+    setContactDelete(contact);
   }
 
   return (
@@ -75,7 +84,9 @@ function home() {
                       >
                         <ModeEditOutlineOutlinedIcon />
                       </IconButton>
-                      <IconButton>
+                      <IconButton
+                        onClick={() => handleOpenModalDelete(contact)}
+                      >
                         <DeleteOutlineOutlinedIcon />
                       </IconButton>
                     </TableCell>
@@ -86,10 +97,16 @@ function home() {
         </TableContainer>
       </Container>
       <Modal
-        shouldFetchNewData={shouldFetchNewData}
         setShouldFetchNewData={setShouldFetchNewData}
         open={open}
         setOpen={setOpen}
+      />
+      <ModalDelete
+        openModalDelete={openModalDelete}
+        setOpenModalDelete={setOpenModalDelete}
+        contactDelete={contactDelete}
+        setShouldFetchNewData={setShouldFetchNewData}
+        value={value}
       />
     </>
   );
