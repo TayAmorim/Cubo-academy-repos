@@ -31,13 +31,13 @@ export default function KeepMountedModal({
   setShouldFetchNewData,
 }) {
   const { request } = useFetch();
-  const contactName = useForm();
-  const contactEmail = useForm();
-  const contactTel = useForm();
+  const contactName = useForm("nome");
+  const contactEmail = useForm("email");
+  const contactTel = useForm("telefone");
   const validateEmail = useValidate("email", contactEmail.value);
   const validateName = useValidate("name", contactName.value);
   const validateTel = useValidate("telefone", contactTel.value);
-  const { value } = useContext(UserContext);
+  const { value, userEdit } = useContext(UserContext);
   const handleClose = () => setOpen(false);
 
   function handleAddContact(event) {
@@ -59,6 +59,11 @@ export default function KeepMountedModal({
     }
   }
 
+  function handleEditContact(event) {
+    event.preventDefault();
+    console.log(userEdit);
+  }
+
   return (
     <div>
       <Modal
@@ -77,7 +82,9 @@ export default function KeepMountedModal({
           >
             Novo Contato
           </Typography>
-          <FormContainer handleClickSubmit={handleAddContact}>
+          <FormContainer
+            handleClickSubmit={userEdit ? handleEditContact : handleAddContact}
+          >
             <CssTextField
               error={validateName.error ? true : false}
               id="nome"

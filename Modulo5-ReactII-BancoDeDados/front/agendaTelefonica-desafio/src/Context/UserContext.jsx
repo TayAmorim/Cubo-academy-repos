@@ -10,6 +10,8 @@ export const UserStorage = ({ children }) => {
   const [value, setValue, remove] = useLocalStorage("token");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [userEdit, setUserEdit] = useState(false);
+  const [clearForm, setClearForm] = useState(false);
   const navigate = useNavigate();
 
   async function userLogin(userEmail, password) {
@@ -48,7 +50,19 @@ export const UserStorage = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, data, error, remove, value, registerUser, setError }}
+      value={{
+        userLogin,
+        data,
+        error,
+        remove,
+        value,
+        registerUser,
+        setError,
+        userEdit,
+        setUserEdit,
+        clearForm,
+        setClearForm,
+      }}
     >
       {children}
     </UserContext.Provider>

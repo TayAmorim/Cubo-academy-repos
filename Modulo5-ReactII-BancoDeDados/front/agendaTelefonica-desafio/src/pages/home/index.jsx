@@ -24,7 +24,7 @@ function home() {
   const { data, request } = useFetch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const { value } = useContext(UserContext);
+  const { value, setUserEdit } = useContext(UserContext);
   const [shouldFetchNewData, setShouldFetchNewData] = useState(true);
 
   useEffect(() => {
@@ -33,6 +33,11 @@ function home() {
     request(url, options);
     setShouldFetchNewData(false);
   }, [value, request, shouldFetchNewData]);
+
+  function handleOpenModalContact(contact) {
+    setOpen(true);
+    setUserEdit(contact);
+  }
 
   return (
     <>
@@ -65,7 +70,9 @@ function home() {
                     <TableCell>{contact.email}</TableCell>
                     <TableCell>{contact.telefone}</TableCell>
                     <TableCell>
-                      <IconButton>
+                      <IconButton
+                        onClick={() => handleOpenModalContact(contact)}
+                      >
                         <ModeEditOutlineOutlinedIcon />
                       </IconButton>
                       <IconButton>
