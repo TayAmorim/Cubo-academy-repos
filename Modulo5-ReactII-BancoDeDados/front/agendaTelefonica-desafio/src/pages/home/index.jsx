@@ -1,22 +1,38 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Button, Container } from "@mui/material";
+import {
+  Button,
+  Container,
+  IconButton,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import ResponsiveAppBar from "../../Components/ResponsiveAppBar";
 import useFetch from "../../Hooks/useFetch";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../Context/UserContext";
 import { CONTACT_GET } from "../../../Api";
 import Modal from "../../Components/Modal";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 function home() {
   const { data, request } = useFetch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const { value } = useContext(UserContext);
+  const [shouldFetchNewData, setShouldFetchNewData] = useState(true);
 
   useEffect(() => {
+    if (!shouldFetchNewData) return;
     const { url, options } = CONTACT_GET(value);
     request(url, options);
-  }, [value, request]);
+    setShouldFetchNewData(false);
+  }, [value, request, shouldFetchNewData]);
 
   return (
     <>
@@ -29,9 +45,44 @@ function home() {
         >
           Adicionar
         </Button>
-        {data && data.map((data) => <p key={data}>{data}</p>)}
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 956 }}>
+            <TableHead>
+              <TableRow>
+                <TableCell>Nome</TableCell>
+                <TableCell>Email</TableCell>
+                <TableCell>Telefone</TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data &&
+                data.map((contact) => (
+                  <TableRow key={contact.id}>
+                    <TableCell component="th" scope="row">
+                      {contact.nome}
+                    </TableCell>
+                    <TableCell>{contact.email}</TableCell>
+                    <TableCell>{contact.telefone}</TableCell>
+                    <TableCell>
+                      <IconButton>
+                        <ModeEditOutlineOutlinedIcon />
+                      </IconButton>
+                      <IconButton>
+                        <DeleteOutlineOutlinedIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Container>
-      <Modal open={open} setOpen={setOpen} />
+      <Modal
+        setShouldFetchNewData={setShouldFetchNewData}
+        open={open}
+        setOpen={setOpen}
+      />
     </>
   );
 }

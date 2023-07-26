@@ -37,3 +37,17 @@ export function CONTACT_GET(token) {
     },
   };
 }
+
+export function CONTACT_POST(token, body) {
+  return {
+    url: `${API_URL}/contatos`,
+    options: {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

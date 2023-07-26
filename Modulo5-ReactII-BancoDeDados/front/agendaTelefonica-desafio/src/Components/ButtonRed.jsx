@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
 import Button from "@mui/material/Button";
 
-function ButtonRed({ children }) {
+function ButtonRed({ children, type }) {
   return (
-    <Button sx={{ background: "rgb(251, 6, 21, 65%);" }} variant="contained">
+    <Button
+      type={type}
+      sx={{ background: "rgb(251, 6, 21, 65%);" }}
+      variant="contained"
+    >
       {children}
     </Button>
   );

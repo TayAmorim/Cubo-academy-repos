@@ -7,6 +7,12 @@ import FormContainer from "./FormContainer";
 import { ButtonGroup } from "@mui/material";
 import ButtonGreen from "./ButtonGreen";
 import ButtonRed from "./ButtonRed";
+import useFetch from "../Hooks/useFetch";
+import useForm from "../Hooks/useForm";
+import { CONTACT_POST } from "../../Api";
+import { useContext } from "react";
+import { UserContext } from "../Context/UserContext";
+import useValidate from "../Hooks/useValidate";
 
 const style = {
   position: "absolute",
@@ -19,8 +25,39 @@ const style = {
   p: 4,
 };
 
-export default function KeepMountedModal({ open, setOpen }) {
+export default function KeepMountedModal({
+  open,
+  setOpen,
+  setShouldFetchNewData,
+}) {
+  const { request } = useFetch();
+  const contactName = useForm();
+  const contactEmail = useForm();
+  const contactTel = useForm();
+  const validateEmail = useValidate("email", contactEmail.value);
+  const validateName = useValidate("name", contactName.value);
+  const validateTel = useValidate("telefone", contactTel.value);
+  const { value } = useContext(UserContext);
   const handleClose = () => setOpen(false);
+
+  function handleAddContact(event) {
+    event.preventDefault();
+
+    if (
+      validateEmail.validate() &&
+      validateName.validate() &&
+      validateTel.validate()
+    ) {
+      const newContact = {
+        nome: contactName.value,
+        email: contactEmail.value,
+        telefone: contactTel.value,
+      };
+      const { url, options } = CONTACT_POST(value, newContact);
+      request(url, options);
+      setShouldFetchNewData(true);
+    }
+  }
 
   return (
     <div>
@@ -32,13 +69,38 @@ export default function KeepMountedModal({ open, setOpen }) {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h1" component="h2">
+          <Typography
+            id="keep-mounted-modal-title"
+            variant="h1"
+            component="h2"
+            sx={{ textAlign: "center" }}
+          >
             Novo Contato
           </Typography>
-          <FormContainer>
-            <CssTextField id="nome" placeholder="Nome" />
-            <CssTextField id="email" type="password" placeholder="Email" />
-            <CssTextField id="telefone" type="tel" placeholder="Telefone" />
+          <FormContainer handleClickSubmit={handleAddContact}>
+            <CssTextField
+              error={validateName.error ? true : false}
+              id="nome"
+              placeholder="Nome"
+              helperText={validateName.error ? validateName.error : ""}
+              {...contactName}
+            />
+            <CssTextField
+              error={validateEmail.error ? true : false}
+              id="email"
+              type="email"
+              placeholder="Email"
+              helperText={validateEmail.error ? validateEmail.error : ""}
+              {...contactEmail}
+            />
+            <CssTextField
+              error={validateTel.error ? true : false}
+              id="telefone"
+              type="tel"
+              placeholder="Telefone"
+              helperText={validateTel.error ? validateTel.error : ""}
+              {...contactTel}
+            />
             <ButtonGroup
               sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
             >
