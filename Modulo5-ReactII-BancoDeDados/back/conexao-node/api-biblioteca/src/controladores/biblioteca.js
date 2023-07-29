@@ -23,7 +23,34 @@ const pesquisarAutor = async (req, res) => {
       res.json(resultSend);
     }
   } catch (error) {
-    console.log(error);
+    res.status(404).json({ message: `${error?.message}` });
+  }
+};
+
+const listarLivros = async (req, res) => {
+  try {
+    const query = `select livros.id as livro_id, livros.nome as livro_nome, livros.genero, livros.editora, livros.data_publicacao, autores.* from livros join autores on livros.autor_id = autores.id`;
+
+    const { rows } = await pool.query(query);
+    const result = rows.map((row) => {
+      const livro = {
+        id: row.livro_id,
+        nome: row.livro_nome,
+        genero: row.editora,
+        editora: row.editora,
+        data_publicacao: row.data_publicacao,
+        autor: {
+          id: row.id,
+          nome: row.nome,
+          idade: row.idade,
+        },
+      };
+      return livro;
+    });
+
+    res.json(result);
+  } catch (error) {
+    res.status(404).json({ message: `${error?.message}` });
   }
 };
 
@@ -37,7 +64,7 @@ const cadastrarAutor = async (req, res) => {
     const result = await pool.query(queryResult, [nome]);
     res.json(result.rows[0]);
   } catch (error) {
-    console.log(error);
+    res.status(404).json({ message: `${error?.message}` });
   }
 };
 
@@ -53,8 +80,13 @@ const cadastraLivro = async (req, res) => {
     const result = await pool.query(queryResult, [nome]);
     res.json(result.rows[0]);
   } catch (err) {
-    console.log(err);
+    res.status(404).json({ message: `${error?.message}` });
   }
 };
 
-module.exports = { cadastrarAutor, pesquisarAutor, cadastraLivro };
+module.exports = {
+  cadastrarAutor,
+  pesquisarAutor,
+  cadastraLivro,
+  listarLivros,
+};
