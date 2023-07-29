@@ -11,7 +11,9 @@ const pesquisarAutor = async (req, res) => {
     if (rowCount === 0)
       return res.status(404).json({ mensage: "Autor não encontrado" });
     else {
-      const queryDetalharAutor = `select * from autores join livros on autores.id = livros.autor_id where autores.id = $1`;
+      const queryDetalharAutor = `select livros.id, livros.nome, livros.editora, livros.data_publicacao, 
+      livros.autor_id from livros join autores on livros.autor_id = autores.id where autores.id = $1
+      `;
       const result = await pool.query(queryDetalharAutor, [id]);
       const resultSend = {
         ...rows[0],
