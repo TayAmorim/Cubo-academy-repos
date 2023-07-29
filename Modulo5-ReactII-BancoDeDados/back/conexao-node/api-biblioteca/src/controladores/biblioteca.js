@@ -1,5 +1,18 @@
 const pool = require("../conexao");
 
+const pesquisarAutor = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const query = `select * from autores WHERE id = $1`;
+    const { rowCount, rows } = await pool.query(query, [id]);
+    if (rowCount === 0)
+      return res.status(404).json({ mensage: "Autor não encontrado" });
+    else return res.status(200).json(rows[0]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const cadastrarAutor = async (req, res) => {
   const { nome, idade } = req.body;
 
@@ -14,4 +27,4 @@ const cadastrarAutor = async (req, res) => {
   }
 };
 
-module.exports = { cadastrarAutor };
+module.exports = { cadastrarAutor, pesquisarAutor };
