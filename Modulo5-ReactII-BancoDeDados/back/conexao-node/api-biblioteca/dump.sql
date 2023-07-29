@@ -7,4 +7,11 @@ idade integer
 );
 
 
-const quey = `insert into autores (nome, idade) values ($1, $2)`;
+create table livros (
+  id serial primary key,
+  nome text not  null,
+  genero text,
+  editora text,
+  data_publicacao date not null,
+  autor_id integer references autores(id)
+);
