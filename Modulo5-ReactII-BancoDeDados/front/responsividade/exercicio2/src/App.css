@@ -1,0 +1,27 @@
+.produto {
+  width: 300px;
+  margin-top: 4rem;
+}
+
+.produtos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 100vh;
+  margin-bottom: 2rem;
+}
+.produtoImagem {
+  width: 300px;
+}
+
+.botaoComprar {
+  width: 100%;
+  min-height: 40px;
+  background-color: rgb(5, 87, 117);
+  color: #fff;
+  padding: 8px;
+  border: 0;
+  cursor: pointer;
+  font-size: 24px;
+}
