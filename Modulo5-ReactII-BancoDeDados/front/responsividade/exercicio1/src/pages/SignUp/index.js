@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import SignUpBackground from '../../assets/sign-up-background.jpg';
-import useRequests from '../../hooks/useRequests';
-import './styles.css';
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import SignUpBackground from "../../assets/sign-up-background.jpg";
+import useRequests from "../../hooks/useRequests";
+import "./styles.css";
 
-const defaultValuesForm = { name: '', email: '', password: '' };
+const defaultValuesForm = { name: "", email: "", password: "" };
 
 function SignUp() {
   const [form, setForm] = useState(defaultValuesForm);
@@ -14,13 +14,12 @@ function SignUp() {
   function handleChange(target) {
     setForm({
       ...form,
-      [target.name]: target.value
+      [target.name]: target.value,
     });
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
-
 
     if (!form.email || !form.password || !form.name) {
       return;
@@ -29,13 +28,13 @@ function SignUp() {
     const body = {
       nome: form.name,
       email: form.email,
-      senha: form.password
+      senha: form.password,
     };
 
-    const result = await requests.post('usuarios', body);
+    const result = await requests.post("usuarios", body);
 
     if (result) {
-      history.push('/');
+      history.push("/");
     }
   }
 
@@ -43,7 +42,6 @@ function SignUp() {
     <main>
       <div className="container-left">
         <form onSubmit={handleSubmit}>
-
           <h2>Cadastre-se</h2>
           <input
             name="name"
@@ -74,18 +72,19 @@ function SignUp() {
         </form>
 
         <div className="login-link">
-          <span>Já tem cadastro?</span><Link to="/sign-in">Clique aqui!</Link>
+          <span>Já tem cadastro?</span>
+          <Link to="/sign-in">Clique aqui!</Link>
         </div>
       </div>
       <div
+        className="container-right photo-container-singUp"
         style={{
           backgroundImage: `url(${SignUpBackground})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover'
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
         }}
-      >
-      </div>
+      ></div>
     </main>
   );
 }
