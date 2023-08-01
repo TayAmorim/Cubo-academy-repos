@@ -1,0 +1,43 @@
+@import url("./styles/global.css");
+
+html {
+  font-size: 62.5%;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: #1972a8;
+  text-decoration: none;
+}
+
+input[type="text"],
+input[type="password"] {
+  background-color: #fdfafa;
+  border: 1px solid #e8e8e8;
+  height: 51px;
+  border-radius: 0.8rem;
+  margin: 8px 0;
+  padding: 0 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
