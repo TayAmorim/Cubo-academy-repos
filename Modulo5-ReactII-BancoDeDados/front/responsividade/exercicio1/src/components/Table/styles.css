@@ -66,3 +66,16 @@
     margin-right: 4.5rem;
   }
 }
+
+@media only screen and (max-width: 540px) {
+  .email {
+    margin-right: 8rem;
+  }
+  .telefone {
+    margin-right: 4rem;
+  }
+
+  .action-buttons {
+    right: 0px;
+  }
+}

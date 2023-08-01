@@ -34,14 +34,14 @@ function Table() {
       <div className="header-table">
         <strong>Nome</strong>
         <strong className="email">Email</strong>
-        <strong>Telefone</strong>
+        <strong className="telefone">Telefone</strong>
       </div>
       <div className="body-table">
         {allContacts.map((item) => (
           <div className="line-table" key={item.id}>
             <span>{item.nome}</span>
             <span className="email">{item.email}</span>
-            <span>{item.telefone}</span>
+            <span className="telefone">{item.telefone}</span>
             <div className="action-buttons">
               <img
                 src={EditIcon}
