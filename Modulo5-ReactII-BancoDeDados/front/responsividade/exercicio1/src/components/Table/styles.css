@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   height: 46px;
-  background: #F4F0F0;
+  background: #f4f0f0;
   text-align: left;
   padding: 0 24px;
 }
@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   height: 46px;
-  background: #FFFAFA;
+  background: #fffafa;
   text-align: left;
   position: relative;
   margin-bottom: 8px;
@@ -42,7 +42,7 @@
 .action-buttons {
   display: flex;
   position: absolute;
-  right: 32px
+  right: 32px;
 }
 
 .action-buttons img {
@@ -52,4 +52,17 @@
 
 .action-buttons img:first-child {
   margin-right: 8px;
+}
+
+@media only screen and (max-width: 873px) {
+  .container-table {
+    overflow-x: scroll;
+  }
+  .header-table,
+  .line-table {
+    width: 100vw;
+  }
+  .email {
+    margin-right: 4.5rem;
+  }
 }
