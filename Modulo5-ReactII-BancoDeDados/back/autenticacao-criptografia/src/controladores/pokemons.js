@@ -1,5 +1,26 @@
 const pool = require("../conexao");
 
+const listarPokemons = async (req, res) => {
+  try {
+    const { rows } = await pool.query(
+      "select usuarios.nome as nome_usuario, pokemons.* from usuarios join pokemons on usuarios.id = pokemons.usuario_id"
+    );
+    const listagemPokemons = rows.map((row) => {
+      return {
+        id: row.id,
+        usuario: row.nome_usuario,
+        nome: row.nome,
+        apelido: row.apelido,
+        habilidades: row.habilidades.split(", "),
+        imagem: row.imagem,
+      };
+    });
+    return res.json(listagemPokemons);
+  } catch (error) {
+    res.status(500).json({ message: `${error?.message}` });
+  }
+};
+
 const cadastrarPOkemon = async (req, res) => {
   const { nome, habilidades, imagem, apelido } = req.body;
   const { id } = req.usuario;
@@ -40,4 +61,5 @@ const atualizatApelido = async (req, res) => {
 module.exports = {
   cadastrarPOkemon,
   atualizatApelido,
+  listarPokemons,
 };

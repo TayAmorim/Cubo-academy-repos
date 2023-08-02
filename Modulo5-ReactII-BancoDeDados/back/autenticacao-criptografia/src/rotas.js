@@ -10,6 +10,7 @@ const verificarUsuariosLogado = require("./intermediarios/autenticacao");
 const {
   cadastrarPOkemon,
   atualizatApelido,
+  listarPokemons,
 } = require("./controladores/pokemons");
 
 const rotas = express();
@@ -19,6 +20,7 @@ rotas.post("/login", validarCamposLogin, loginUsuario);
 
 rotas.use(verificarUsuariosLogado);
 
+rotas.get("/usuario/pokemons", listarPokemons);
 rotas.post("/usuario/pokemon", validarCamposCadastrarPOkemon, cadastrarPOkemon);
 rotas.patch(
   "/usuario/pokemon/:id",
