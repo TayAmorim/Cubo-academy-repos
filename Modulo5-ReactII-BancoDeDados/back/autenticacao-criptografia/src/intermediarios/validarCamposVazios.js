@@ -43,8 +43,27 @@ const validarCamposCadastrarPOkemon = (req, res, next) => {
   return next();
 };
 
+const validarCampoAtualizarApelido = (req, res, next) => {
+  const { id } = req.params;
+  const { apelido } = req.body;
+
+  if (!id || !apelido) {
+    return res
+      .status(400)
+      .json({ message: "É necessaário informar o id do pokemon e o apelido" });
+  }
+  if (isNaN(id) || apelido === "") {
+    return res.status(400).json({
+      message:
+        "O id precisa ser um tipo numerico e o apelido não pode estar vazio",
+    });
+  }
+  return next();
+};
+
 module.exports = {
   validarCamposVazios,
   validarCamposLogin,
   validarCamposCadastrarPOkemon,
+  validarCampoAtualizarApelido,
 };
