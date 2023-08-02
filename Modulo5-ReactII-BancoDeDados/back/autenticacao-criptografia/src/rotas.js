@@ -1,9 +1,13 @@
 const express = require("express");
-const { cadastrarUsuario } = require("./controladores/usuarios");
-const validarCamposVazios = require("./intermediarios/validarCamposVazios");
+const { cadastrarUsuario, loginUsuario } = require("./controladores/usuarios");
+const {
+  validarCamposVazios,
+  validarCamposLogin,
+} = require("./intermediarios/validarCamposVazios");
 
 const rotas = express();
 
 rotas.post("/usuario", validarCamposVazios, cadastrarUsuario);
+rotas.post("/login", validarCamposLogin, loginUsuario);
 
 module.exports = rotas;
