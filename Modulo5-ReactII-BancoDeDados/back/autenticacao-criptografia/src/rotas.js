@@ -12,6 +12,7 @@ const {
   atualizatApelido,
   listarPokemons,
   listarPokemonId,
+  deletarPokemon,
 } = require("./controladores/pokemons");
 
 const rotas = express();
@@ -30,5 +31,6 @@ rotas.patch(
   validarCampoAtualizarApelido,
   atualizatApelido
 );
+rotas.delete("/usuario/pokemon/:id", deletarPokemon);
 
 module.exports = rotas;
