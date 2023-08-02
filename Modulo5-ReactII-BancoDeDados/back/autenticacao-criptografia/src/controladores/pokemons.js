@@ -21,6 +21,25 @@ const listarPokemons = async (req, res) => {
   }
 };
 
+const listarPokemonId = async (req, res) => {
+  const { id } = req.params;
+  if (isNaN(id)) {
+    return res.status(400).json({ message: "O id precisar ser numerico" });
+  }
+  try {
+    const { rows, rowCount } = await pool.query(
+      "select * from pokemons where id = $1",
+      [id]
+    );
+    if (rowCount < 1) {
+      return res.status(401).json({ message: "Pokemon não encontrado" });
+    }
+    return res.json(rows[0]);
+  } catch (error) {
+    return res.status(500).json({ message: `${error?.message}` });
+  }
+};
+
 const cadastrarPOkemon = async (req, res) => {
   const { nome, habilidades, imagem, apelido } = req.body;
   const { id } = req.usuario;
@@ -62,4 +81,5 @@ module.exports = {
   cadastrarPOkemon,
   atualizatApelido,
   listarPokemons,
+  listarPokemonId,
 };
