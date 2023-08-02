@@ -34,6 +34,7 @@ const loginUsuario = async (req, res) => {
     const token = jwt.sign({ id: usuario.rows[0].id }, senhaJwt, {
       expiresIn: "8h",
     });
+
     const { senha: _, ...usuarioLogado } = usuario.rows[0];
     return res.json({ ...usuarioLogado, token });
   } catch (error) {

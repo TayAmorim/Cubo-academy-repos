@@ -28,4 +28,23 @@ const validarCamposLogin = (req, res, next) => {
   return next();
 };
 
-module.exports = { validarCamposVazios, validarCamposLogin };
+const validarCamposCadastrarPOkemon = (req, res, next) => {
+  const { nome, habilidades } = req.body;
+  if (!nome || !habilidades) {
+    return res
+      .status(400)
+      .json({ message: "Os campos habilidades e nome são obrigatórios" });
+  }
+  if (nome === "" || habilidades === "") {
+    return res
+      .status(400)
+      .json({ message: "Os campos habilidades e nome são obrigatórios" });
+  }
+  return next();
+};
+
+module.exports = {
+  validarCamposVazios,
+  validarCamposLogin,
+  validarCamposCadastrarPOkemon,
+};

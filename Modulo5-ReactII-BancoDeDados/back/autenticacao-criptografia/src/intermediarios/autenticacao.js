@@ -15,6 +15,9 @@ const verificarUsuariosLogado = async (req, res, next) => {
       "select * from usuarios where id = $1",
       [id]
     );
+    if (rowCount < 1) {
+      return res.status(401).json({ mensagem: "Não autorizado" });
+    }
     req.usuario = rows[0];
     next();
   } catch (error) {

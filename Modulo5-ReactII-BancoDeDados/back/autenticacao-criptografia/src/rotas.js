@@ -3,8 +3,10 @@ const { cadastrarUsuario, loginUsuario } = require("./controladores/usuarios");
 const {
   validarCamposVazios,
   validarCamposLogin,
+  validarCamposCadastrarPOkemon,
 } = require("./intermediarios/validarCamposVazios");
 const verificarUsuariosLogado = require("./intermediarios/autenticacao");
+const { cadastrarPOkemon } = require("./controladores/pokemons");
 
 const rotas = express();
 
@@ -13,8 +15,6 @@ rotas.post("/login", validarCamposLogin, loginUsuario);
 
 rotas.use(verificarUsuariosLogado);
 
-rotas.get("/", (req, res) => {
-  res.json("teste");
-});
+rotas.post("/usuario/pokemon", validarCamposCadastrarPOkemon, cadastrarPOkemon);
 
 module.exports = rotas;
