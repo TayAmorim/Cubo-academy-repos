@@ -1,0 +1,1 @@
+create database catalogo_pokemons
