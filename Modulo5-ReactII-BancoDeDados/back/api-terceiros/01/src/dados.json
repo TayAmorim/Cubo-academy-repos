@@ -1,0 +1,44 @@
+{
+  "empresas": [
+    {
+      "name": "Aranea Media P/L",
+      "domain": "facebbok.com",
+      "year_founded": 2013,
+      "industry": "Design",
+      "employees_count": 1,
+      "locality": "Harare",
+      "country": "Zimbabwe",
+      "linkedin_url": "linkedin.com/company/aranea-media-p-l"
+    },
+    {
+      "name": "Airbnb",
+      "domain": "airbnb.com",
+      "year_founded": 2008,
+      "industry": "Internet",
+      "employees_count": 14604,
+      "locality": "San Francisco",
+      "country": "United States",
+      "linkedin_url": "linkedin.com/company/airbnb"
+    },
+    {
+      "name": "Globo.Com",
+      "domain": "globo.com",
+      "year_founded": 2000,
+      "industry": "Internet",
+      "employees_count": 1175,
+      "locality": "Rio De Janeiro",
+      "country": "Brazil",
+      "linkedin_url": "linkedin.com/company/globo-com"
+    },
+    {
+      "name": "Co.Life",
+      "domain": "life.com",
+      "year_founded": 2015,
+      "industry": "Recreational facilities and services",
+      "employees_count": 3,
+      "locality": "Bengaluru",
+      "country": "India",
+      "linkedin_url": "linkedin.com/company/co.life"
+    }
+  ]
+}

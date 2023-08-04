@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.4.0",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
+    "fs.promises": "^0.1.2",
     "nodemon": "^3.0.1",
     "qs": "^6.11.2"
   }
