@@ -1,0 +1,21 @@
+{
+	"name": "codigo-aula-backend-integracao-api-terceiros-base",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon ./src/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"axios": "^0.27.2",
+		"express": "^4.18.1",
+		"pg": "^8.7.3",
+		"qs": "^6.11.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.18"
+	}
+}
