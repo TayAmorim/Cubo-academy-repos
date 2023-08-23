@@ -1,0 +1,54 @@
+.container-main {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-main input[type=file] {
+  margin-bottom: 30px;
+  cursor: pointer;
+  text-align: left;
+  width: 300px;
+}
+
+.container-main button {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.container-main button:hover {
+  opacity: 0.90;
+}
+
+.container-image {
+  width: 300px;
+  min-height: 300px;
+  margin-top: 30px;
+}
+
+.container-image img {
+  width: 100%;
+  height: auto;
+
+  border-right: 8px purple solid;
+  border-top: 8px purple solid;
+  border-left: 8px orange solid;
+  border-bottom: 8px orange solid;
+}
+
+.btn-purple {
+  background-color: purple;
+}
+
+.btn-orange {
+  background-color: orange;
+}

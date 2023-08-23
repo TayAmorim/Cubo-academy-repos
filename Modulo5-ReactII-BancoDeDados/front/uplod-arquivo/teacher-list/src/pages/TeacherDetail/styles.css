@@ -1,0 +1,42 @@
+.container-teacher-detail {
+  flex-direction: column;
+  justify-content: normal;
+}
+
+.teacher-detail {
+  width: 467px;
+  height: 562px;
+  background-color: #DA0175;
+  color: white;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 54px;
+  margin: 92px 24px 24px;
+}
+
+.teacher-detail h1 {
+  font-size: 28px;
+  margin: 24px 0 12px 0;
+}
+
+.teacher-detail span {
+  font-size: 18px;
+  margin-bottom: 48px;
+}
+
+.teacher-detail h3 {
+  margin: 16px 0 24px 0;
+  text-decoration: underline;
+  font-size: 22px;
+}
+
+.teacher-detail p {
+  font-size: 14px;
+  text-align: justify;
+  padding: 5px;
+  overflow-y: auto;
+  max-height: 155px;
+}

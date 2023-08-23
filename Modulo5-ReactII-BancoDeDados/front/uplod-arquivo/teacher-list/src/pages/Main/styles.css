@@ -1,0 +1,17 @@
+.main {
+  flex-direction: column;
+  justify-content: normal;
+}
+
+.main-teachers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin-top: 72px;
+}

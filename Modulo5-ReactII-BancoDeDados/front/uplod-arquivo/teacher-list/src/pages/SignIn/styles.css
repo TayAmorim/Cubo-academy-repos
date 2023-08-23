@@ -1,0 +1,41 @@
+.form-login {
+  width: 494px;
+  height: 475px;
+  background-color: #44444D;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 32px 97px 68px 97px;
+}
+
+.form-body {
+  margin: 60px 0;
+}
+
+.form-body input {
+  width: 300px;
+  height: 48px;
+  background-color: #2E2E36;
+  border: none;
+  font-size: 12px;
+  color: #ffffff;
+  padding: 18px;
+  margin-bottom: 8px;
+}
+
+.form-body span {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.form-login button {
+  width: 300px;
+  height: 48px;
+  background-color: #DA0175;
+  font-size: 12px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
