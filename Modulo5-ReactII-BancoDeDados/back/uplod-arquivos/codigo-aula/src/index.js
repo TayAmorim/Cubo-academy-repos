@@ -1,74 +1,74 @@
-require('dotenv').config()
-const express = require('express')
-const multer = require('./multer')
-const { uploadFile, listagemArquivos, excluirArquivo } = require('./storage')
+require("dotenv").config();
+const express = require("express");
+const multer = require("./multer");
+const { uploadFile, listagemArquivos, excluirArquivo } = require("./storage");
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.post('/upload', multer.single('arquivo'), async (req, res) => {
-    const { file } = req
+app.post("/upload", multer.single("arquivo"), async (req, res) => {
+  const { file } = req;
 
-    try {
-        const arquivo = await uploadFile(
-            `imagens/${file.originalname}`,
-            file.buffer,
-            file.mimetype
-        )
+  try {
+    const arquivo = await uploadFile(
+      `imagens/${file.originalname}`,
+      file.buffer,
+      file.mimetype
+    );
 
-        return res.status(201).json(arquivo)
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({mensagem: 'Erro interno do servidor'})
+    return res.status(201).json(arquivo);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
+  }
+});
+
+app.post("/upload-multiple", multer.array("arquivo"), async (req, res) => {
+  const { files } = req;
+
+  try {
+    const resultado = [];
+
+    for (const file of files) {
+      const arquivo = await uploadFile(
+        `imagens/${file.originalname}`,
+        file.buffer,
+        file.mimetype
+      );
+
+      resultado.push(arquivo);
     }
-})
 
-app.post('/upload-multiple', multer.array('arquivo'), async (req, res) => {
-    const { files } = req
+    return res.json(resultado);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
+  }
+});
 
-    try {
-        const resultado = []
+app.get("/arquivos", async (req, res) => {
+  try {
+    const files = await listagemArquivos();
 
-        for (const file of files) {
-            const arquivo = await uploadFile(
-                `imagens/${file.originalname}`,
-                file.buffer,
-                file.mimetype
-            )
+    return res.json(files);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
+  }
+});
 
-            resultado.push(arquivo)
-        }
+app.delete("/arquivo", async (req, res) => {
+  const { file } = req.query;
 
-        return res.json(resultado)
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({mensagem: 'Erro interno do servidor'})
-    }
-})
+  try {
+    await excluirArquivo(file);
 
-app.get('/arquivos', async (req, res) => {
-    try {
-        const files = await listagemArquivos()
-    
-        return res.json(files)
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({mensagem: 'Erro interno do servidor'})
-    }
-})
+    return res.status(204).send();
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
+  }
+});
 
-app.delete('/arquivo', async (req, res) => {
-    const { file } = req.query
-
-    try {
-        await excluirArquivo(file)
-
-        return res.status(204).send()
-    } catch (error) {
-        console.log(error)
-        return res.status(500).json({mensagem: 'Erro interno do servidor'})
-    }
-})
-
-app.listen(process.env.PORT)
+app.listen(process.env.PORT);
